@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "capybara-page-object.gemspec",
     "lib/capybara-page-object.rb",
     "test/example.html",
     "test/helper.rb",
