@@ -1,9 +1,9 @@
 = capybara-page-object
 
-Description goes here.
+Page Objects for Capybara
 
 == Contributing to capybara-page-object
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -16,4 +16,3 @@ Description goes here.
 
 Copyright (c) 2012 Andy Waite. See LICENSE.txt for
 further details.
-

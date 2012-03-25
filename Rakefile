@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "capybara-page-object"
   gem.homepage = "http://github.com/andyw8/capybara-page-object"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Page Objects for Capybara"
+  gem.description = "Page Objects for Capybara"
   gem.email = "andy@andywaite.com"
   gem.authors = ["Andy Waite"]
   # dependencies defined in Gemfile
