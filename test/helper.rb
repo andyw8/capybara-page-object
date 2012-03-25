@@ -16,3 +16,9 @@ require 'capybara-page-object'
 
 class Test::Unit::TestCase
 end
+
+def load_sample_into_model(model)
+  filename = model.to_s.split('::').last + '.html'
+  html = File.open(File.dirname(__FILE__) + '/' + filename).read
+  model.new(Capybara.string(html))
+end
