@@ -6,15 +6,23 @@ class TestForm< Test::Unit::TestCase
     setup do
       @form = load_sample_into_model(CapybaraPageObject::Form)
     end
-    
-    should "action" do
-      assert_equal '/hello', @form.action
-    end
-    
-    should "fields" do
-      f = {'input_1' => 'value_1', 'input_2' => 'value_2'}
-      assert_equal f, @form.fields
+
+    should "buttons" do
+      assert_equal 4, @form.buttons.size
     end
 
+    should "fields" do
+      f = {
+        'input_1' => 'value_1',
+        'input_2' => 'value_2',
+        'colour' => 'blue',
+        'essay' => 'hello world',
+        'checkbox_1' => false,
+        'checkbox_2' => true,
+        'radio_button_1' => false,
+        'radio_button_2' => true
+      }
+      assert_equal f, @form.fields
+    end
   end
 end
