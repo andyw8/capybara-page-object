@@ -1,6 +1,7 @@
 module CapybaraPageObject
   class Base
     include Extractors::Common
+    include Extractors::PageLevel
 
     attr_accessor :source
 
