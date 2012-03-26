@@ -1,4 +1,4 @@
-require_relative 'base'
+require File.dirname(__FILE__) + '/base'
 
 module CapybaraPageObject
   class Image < CapybaraPageObject::Base

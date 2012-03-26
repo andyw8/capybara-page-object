@@ -1,10 +1,10 @@
 require 'rubygems'
 require 'capybara'
-require_relative 'extractors/common'
-require_relative 'extractors/page_level'
-require_relative 'page'
-require_relative 'table'
-require_relative 'image'
+require File.dirname(__FILE__) + '/extractors/common'
+require File.dirname(__FILE__) + '/extractors/page_level'
+require File.dirname(__FILE__) + '/page'
+require File.dirname(__FILE__) + '/table'
+require File.dirname(__FILE__) + '/image'
 
 module Capybara
   module Node

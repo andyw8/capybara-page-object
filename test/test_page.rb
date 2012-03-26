@@ -1,4 +1,4 @@
-require_relative 'helper'
+require File.dirname(__FILE__) + '/helper'
 require 'capybara'
 
 class TestCapybaraPageObject < Test::Unit::TestCase
@@ -45,6 +45,14 @@ class TestCapybaraPageObject < Test::Unit::TestCase
     should "data" do
       h = {'foo' => 'a', 'bar' => 'b', 'cat' => ''}
       assert_equal h, @page.find('#data').data
+    end
+
+    context "#path" do
+      should "raise exception if path not defined" do
+        assert_raise CapybaraPageObject::MissingPath do
+          @page.path
+        end
+      end
     end
 
   end

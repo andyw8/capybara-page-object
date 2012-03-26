@@ -1,4 +1,4 @@
-require_relative 'helper'
+require File.dirname(__FILE__) + '/helper'
 require 'capybara'
 
 class TestImage< Test::Unit::TestCase
