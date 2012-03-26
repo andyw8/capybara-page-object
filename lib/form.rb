@@ -35,5 +35,15 @@ module CapybaraPageObject
       end
       r
     end
+
+    def respond_to?(sym)
+       fields.has_key?(sym.to_s) || super(sym)
+     end
+
+    def method_missing(sym, *args, &block)
+      return fields[sym.to_s] if fields.has_key?(sym.to_s)
+      super(sym, *args, &block)
+    end
   end
 end
+
