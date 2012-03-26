@@ -20,7 +20,8 @@ class TestForm< Test::Unit::TestCase
         'checkbox_1' => false,
         'checkbox_2' => true,
         'radio_button_1' => false,
-        'radio_button_2' => true
+        'radio_button_2' => true,
+        'countries' => ['spain', 'germany']
       }
       assert_equal f, @form.fields
     end
