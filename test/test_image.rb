@@ -8,11 +8,11 @@ class TestImage< Test::Unit::TestCase
     end
 
     should "src" do
-      assert_equal 'image_1.jpg', @image.src
+      assert_equal 'image.jpg', @image.src
     end
     
-    should "src" do
-      assert_equal 'image 1', @image.alt
+    should "alt" do
+      assert_equal 'alt image', @image.alt
     end
     
   end
