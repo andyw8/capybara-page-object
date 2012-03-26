@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/helper'
 require 'capybara'
 
-class TestImage< Test::Unit::TestCase
+class TestImage < Test::Unit::TestCase
   context "" do
     setup do
       @image = load_sample_into_model(CapybaraPageObject::Image)

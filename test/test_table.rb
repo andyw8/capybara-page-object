@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/helper'
 require 'capybara'
 
-class TestTable< Test::Unit::TestCase
+class TestTable < Test::Unit::TestCase
   context "" do
     setup do
       @table = load_sample_into_model(CapybaraPageObject::Table)
@@ -12,9 +12,7 @@ class TestTable< Test::Unit::TestCase
     end
 
     should "headers" do
-      assert_same_elements ["table_1_th_1", "table_1_th_2"], @table.headers(:keys => 'id')
+      assert_same_elements ["TH1", "TH2"], @table.headers.collect(&:text)
     end
-    
   end
-
 end

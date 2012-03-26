@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/helper'
 require 'capybara'
 
-class TestForm< Test::Unit::TestCase
+class TestForm < Test::Unit::TestCase
   context "" do
     setup do
       @form = load_sample_into_model(CapybaraPageObject::Form)
@@ -24,6 +24,10 @@ class TestForm< Test::Unit::TestCase
         'countries' => ['spain', 'germany']
       }
       assert_equal f, @form.fields
+    end
+
+    should "field access" do
+      assert_equal 'hello world', @form.essay
     end
   end
 end
