@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{capybara-page-object}
-  s.version = "0.1.0"
+  s.name = "capybara-page-object"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Andy Waite}]
-  s.date = %q{2012-03-25}
-  s.description = %q{Page Objects for Capybara}
-  s.email = %q{andy@andywaite.com}
+  s.authors = ["Andy Waite"]
+  s.date = "2012-03-26"
+  s.description = "Page Objects for Capybara"
+  s.email = "andy@andywaite.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -25,16 +25,26 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "capybara-page-object.gemspec",
+    "lib/base.rb",
     "lib/capybara-page-object.rb",
-    "test/example.html",
+    "lib/extractors/common.rb",
+    "lib/extractors/page_level.rb",
+    "lib/image.rb",
+    "lib/page.rb",
+    "lib/table.rb",
     "test/helper.rb",
-    "test/test_capybara-page-object.rb"
+    "test/image.html",
+    "test/page.html",
+    "test/table.html",
+    "test/test_image.rb",
+    "test/test_page.rb",
+    "test/test_table.rb"
   ]
-  s.homepage = %q{http://github.com/andyw8/capybara-page-object}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{Page Objects for Capybara}
+  s.homepage = "http://github.com/andyw8/capybara-page-object"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.10"
+  s.summary = "Page Objects for Capybara"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
