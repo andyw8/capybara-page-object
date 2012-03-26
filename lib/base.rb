@@ -11,7 +11,7 @@ module CapybaraPageObject
     end
 
     def path(*args)
-      raise PageObjectMissingPath, "You need to override this"
+      raise MissingPath, "You need to override this"
     end
 
     def prefix
