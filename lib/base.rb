@@ -13,8 +13,13 @@ module CapybaraPageObject
       raise PageObjectMissingPath, "You need to override this"
     end
 
+    def prefix
+      ''
+    end
+
     def visit
-      source.visit path
+      source.visit prefix + path
+      self
     end
   end
 
