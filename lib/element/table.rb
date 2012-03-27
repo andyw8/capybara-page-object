@@ -1,5 +1,3 @@
-require File.dirname(__FILE__) + '/base'
-
 module CapybaraPageObject
   class Table < CapybaraPageObject::Base
     def rows(attr={})

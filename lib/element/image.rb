@@ -1,5 +1,3 @@
-require File.dirname(__FILE__) + '/base'
-
 module CapybaraPageObject
   class Image < CapybaraPageObject::Base
     # FIXME must be something better than source.find
