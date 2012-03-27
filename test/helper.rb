@@ -17,8 +17,8 @@ require 'capybara-page-object'
 class Test::Unit::TestCase
 end
 
-def load_sample_into_model(model)
+def load_fixture(model)
   filename = model.to_s.split('::').last + '.html'
-  html = File.open(File.dirname(__FILE__) + '/' + filename).read
+  html = File.open(File.dirname(__FILE__) + '/fixtures/' + filename).read
   model.new(Capybara.string(html))
 end

@@ -4,7 +4,7 @@ require 'capybara'
 class TestForm < Test::Unit::TestCase
   context "" do
     setup do
-      @form = load_sample_into_model(CapybaraPageObject::Form)
+      @form = load_fixture(CapybaraPageObject::Form)
     end
 
     should "buttons" do

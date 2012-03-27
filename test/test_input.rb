@@ -4,7 +4,7 @@ require 'capybara'
 class TestTable < Test::Unit::TestCase
   context "" do
     setup do
-      @input = load_sample_into_model(CapybaraPageObject::Input)
+      @input = load_fixture(CapybaraPageObject::Input)
     end
     
     should "value" do

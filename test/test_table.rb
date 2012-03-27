@@ -4,7 +4,7 @@ require 'capybara'
 class TestTable < Test::Unit::TestCase
   context "" do
     setup do
-      @table = load_sample_into_model(CapybaraPageObject::Table)
+      @table = load_fixture(CapybaraPageObject::Table)
     end
     
     should "rows" do

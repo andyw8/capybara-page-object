@@ -4,7 +4,7 @@ require 'capybara'
 class TestImage < Test::Unit::TestCase
   context "" do
     setup do
-      @image = load_sample_into_model(CapybaraPageObject::Image)
+      @image = load_fixture(CapybaraPageObject::Image)
     end
 
     should "src" do

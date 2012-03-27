@@ -4,7 +4,7 @@ require 'capybara'
 class TestCommon < Test::Unit::TestCase
   context "Using the example.html" do
     setup do
-      @page = load_sample_into_model(CapybaraPageObject::Page)
+      @page = load_fixture(CapybaraPageObject::Page)
     end
 
     should "tables" do
