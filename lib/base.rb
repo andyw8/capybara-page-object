@@ -10,6 +10,10 @@ module CapybaraPageObject
       @source = source
     end
 
+    def self.from_string(string)
+      new(Capybara.string(string))
+    end
+
     def path(*args)
       raise MissingPath, "You need to override this"
     end
