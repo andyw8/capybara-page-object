@@ -1,4 +1,6 @@
 require File.dirname(__FILE__) + '/collections'
+require File.dirname(__FILE__) + '/extractors/common'
+require File.dirname(__FILE__) + '/extractors/page_level'
 
 module CapybaraPageObject
   class Base
