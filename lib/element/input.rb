@@ -9,7 +9,7 @@ module CapybaraPageObject
     
     # TODO find a way to delegate this
     def value
-      source.find('input').value
+      find('input').value
     end
 
     def checkable?

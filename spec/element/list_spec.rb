@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../helper'
 module CapybaraPageObject
   class MyListItem < CapybaraPageObject::Node
     def value
-      source.find('.description').text.strip
+      find('.description').text.strip
     end
   end
 end

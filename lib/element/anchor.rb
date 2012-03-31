@@ -1,8 +1,8 @@
 module CapybaraPageObject
   class Anchor < CapybaraPageObject::Node
-    # FIXME must be something better than source.find
+    # FIXME must be something better than finding each element
     def href
-      source.find('a')[:href]
+      find('a')[:href]
     end
     
     def uri
