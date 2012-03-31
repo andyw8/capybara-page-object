@@ -1,22 +1,22 @@
 require File.dirname(__FILE__) + '/../helper'
 
-class Meta < Test::Unit::TestCase
+describe "Meta" do
   context "Meta" do
-    setup do
+    before do
       @meta = CapybaraPageObject::Meta.from_string <<-EOF
       <meta name="description" content="my description">
       EOF
     end
 
     context "#key" do
-      should "return the name from the meta tag" do
-        assert_equal 'description', @meta.key
+      it "return the name from the meta tag" do
+        @meta.key.should == 'description'
       end
     end
     
     context "#value" do
-      should "return the description from the meta tag" do
-        assert_equal 'my description', @meta.value
+      it "return the description from the meta tag" do
+        @meta.value.should == 'my description'
       end
     end
   end

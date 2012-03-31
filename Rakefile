@@ -2,6 +2,9 @@
 
 require 'rubygems'
 require 'bundler'
+require 'rspec'
+require 'rspec/core/rake_task'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -25,22 +28,33 @@ Jeweler::Tasks.new do |gem|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+#require 'rake/testtask'
+# Rake::TestTask.new(:test) do |test|
+#   test.libs << 'lib' << 'test'
+#   test.pattern = 'test/**/test_*.rb'
+#   test.verbose = true
+# end
+# 
+# require 'rcov/rcovtask'
+# Rcov::RcovTask.new do |test|
+#   test.libs << 'test'
+#   test.pattern = 'test/**/test_*.rb'
+#   test.verbose = true
+#   test.rcov_opts << '--exclude "gems/*"'
+# end
+
+desc "Run specs"
+RSpec::Core::RakeTask.new do |t|
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
+desc "Generate code coverage"
+RSpec::Core::RakeTask.new(:coverage) do |t|
+  t.pattern = "./spec/**/*_spec.rb" # don't need this, it's default.
+  t.rcov = true
+  t.rcov_opts = ['--exclude', 'spec']
 end
 
-task :default => :test
+task :default => :spec
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
