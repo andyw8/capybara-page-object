@@ -16,8 +16,8 @@ module CapybaraPageObject
       all('select').each do |select|
         r[select[:name]] = select.value
       end
-      all('textarea').each do |select|
-        r[select[:name]] = select.value
+      all('textarea').each do |textarea|
+        r[select[:name]] = textarea.value
       end
       r
     end
