@@ -18,8 +18,13 @@ require 'capybara-page-object'
 class Test::Unit::TestCase
 end
 
-def load_fixture(model)
-  filename = model.to_s.split('::').last.downcase + '.html'
-  html = File.open(File.dirname(__FILE__) + '/fixtures/' + filename).read
-  model.new(Capybara.string(html))
+def load_fixture(arg)
+  if arg.class == String
+    Capybara.string(arg)
+  else
+    filename = arg.to_s.split('::').last.downcase + '.html'
+    model = arg
+    html = File.open(File.dirname(__FILE__) + '/fixtures/' + filename).read
+    model.new(Capybara.string(html))
+  end
 end
