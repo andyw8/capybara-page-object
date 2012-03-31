@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/collections'
 require File.dirname(__FILE__) + '/navigation'
 require File.dirname(__FILE__) + '/key_value'
+require File.dirname(__FILE__) + '/html5_data'
 require File.dirname(__FILE__) + '/extractors/common'
 require File.dirname(__FILE__) + '/extractors/page_level'
 
@@ -10,6 +11,7 @@ module CapybaraPageObject
     include Extractors::PageLevel
     include CapybaraPageObject::Collections
     include CapybaraPageObject::Navigation
+    include CapybaraPageObject::HTML5Data
 
     attr_accessor :source
 
