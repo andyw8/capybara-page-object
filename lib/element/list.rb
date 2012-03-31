@@ -12,5 +12,9 @@ module CapybaraPageObject
         all('li')
       end
     end
+    
+    def key
+      find('ul')[:id]
+    end
   end
 end

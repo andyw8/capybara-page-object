@@ -12,7 +12,7 @@ class TestList < Test::Unit::TestCase
   context "List" do
     setup do
       @list = CapybaraPageObject::List.from_string <<-EOF
-      <ul>
+      <ul id="products">
         <li>
           <span class="description">iPhone</span>
           <span class="price">$500</span>
@@ -32,6 +32,12 @@ class TestList < Test::Unit::TestCase
       
       should "accept a custom list item object" do
         assert_equal "iPhone", @list.items({:factory => CapybaraPageObject::MyListItem}).first.value
+      end
+    end
+    
+    context "#key" do
+      should "be the id" do
+        assert_equal 'products', @list.key
       end
     end
   end

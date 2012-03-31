@@ -11,5 +11,11 @@ class TestImage < Test::Unit::TestCase
         assert_equal 'alt image', @image.alt
       end
     end
+    
+    context "#key" do
+      should "return the alt tag" do
+        assert_equal 'alt image', @image.key
+      end
+    end
   end
 end
