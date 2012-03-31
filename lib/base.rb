@@ -1,4 +1,6 @@
 require File.dirname(__FILE__) + '/collections'
+require File.dirname(__FILE__) + '/navigation'
+require File.dirname(__FILE__) + '/key_value'
 require File.dirname(__FILE__) + '/extractors/common'
 require File.dirname(__FILE__) + '/extractors/page_level'
 
@@ -7,6 +9,7 @@ module CapybaraPageObject
     include Extractors::Common
     include Extractors::PageLevel
     include CapybaraPageObject::Collections
+    include CapybaraPageObject::Navigation
 
     attr_accessor :source
 
@@ -17,19 +20,6 @@ module CapybaraPageObject
 
     def self.from_string(string)
       new(Capybara.string(string))
-    end
-
-    def path(*args)
-      raise MissingPath, "You need to override this"
-    end
-
-    def prefix
-      ''
-    end
-
-    def visit
-      source.visit prefix + path
-      self
     end
     
     def respond_to?(sym)
@@ -42,15 +32,6 @@ module CapybaraPageObject
       else
         super(sym, *args, &block)
       end
-    end
-    
-    def key
-      # TODO this is ugly
-      source.find('body').native.children.first.attributes['id'].value
-    end
-    
-    def value
-      source.text
     end
   end
 
