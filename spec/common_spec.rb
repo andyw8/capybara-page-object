@@ -1,5 +1,4 @@
 require File.dirname(__FILE__) + '/helper'
-require 'capybara'
 
 describe "Page" do
   before do
