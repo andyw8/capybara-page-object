@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/base'
 
 module CapybaraPageObject
   class Page < CapybaraPageObject::Base
-    include Extractors::PageLevel
+    include Extractor::PageLevel
 
     def initialize(source)
       if source

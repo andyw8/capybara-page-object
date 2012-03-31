@@ -7,7 +7,7 @@ require File.dirname(__FILE__) + '/html5_data'
 module Capybara
   module Node
     module Finders
-      include Extractors::PageLevel
+      include Extractor::PageLevel
       include CapybaraPageObject::HTML5Data
     end
   end

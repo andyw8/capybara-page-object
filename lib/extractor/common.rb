@@ -1,4 +1,4 @@
-module Extractors
+module Extractor
   
   module Common
     def extract(element, attr={}, page_object_class=nil)

@@ -1,6 +1,4 @@
-require File.dirname(__FILE__) + '/common'
-
-module Extractors
+module Extractor
   module PageLevel
     include Common
     
