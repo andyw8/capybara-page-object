@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/helper'
 
 describe "Page" do
   before do
-    @page = load_fixture(CapybaraPageObject::Page)
+    @page = load_fixture(CapybaraPageObject::Node)
   end
 
   context "#tables" do

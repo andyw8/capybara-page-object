@@ -1,5 +1,5 @@
 require 'capybara'
-require File.dirname(__FILE__) + '/page'
+require File.dirname(__FILE__) + '/node'
 require File.dirname(__FILE__) + '/element'
 require File.dirname(__FILE__) + '/html5_data'
 

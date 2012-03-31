@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class List < CapybaraPageObject::Page
+  class List < CapybaraPageObject::Node
     def items(opts={})
       factory = opts[:factory]
       if factory

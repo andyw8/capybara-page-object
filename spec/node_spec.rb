@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + '/../helper'
+require File.dirname(__FILE__) + '/helper'
 
 describe "Page" do
   context "Using the example.html" do
     before do
-      @page = load_fixture(CapybaraPageObject::Page)
+      @page = load_fixture(CapybaraPageObject::Node)
     end
 
     it "page title" do

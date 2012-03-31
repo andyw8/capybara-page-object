@@ -6,7 +6,7 @@ require File.dirname(__FILE__) + '/extractor/common'
 require File.dirname(__FILE__) + '/extractor/page_level'
 
 module CapybaraPageObject
-  class Page
+  class Node
     include Extractor::Common
     include Extractor::PageLevel
     include CapybaraPageObject::Collections
