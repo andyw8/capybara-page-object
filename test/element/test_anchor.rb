@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../helper'
 class TestAnchor < Test::Unit::TestCase
   context "Anchor" do
     setup do
-      @anchor = load_fixture(CapybaraPageObject::Anchor)
+      @anchor = CapybaraPageObject::Anchor.from_string '<a href="hello.html">'
     end
 
     context "#href" do

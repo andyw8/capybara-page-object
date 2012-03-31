@@ -11,7 +11,18 @@ end
 class TestList < Test::Unit::TestCase
   context "List" do
     setup do
-      @list = load_fixture(CapybaraPageObject::List)
+      @list = CapybaraPageObject::List.from_string <<-EOF
+      <ul>
+        <li>
+          <span class="description">iPhone</span>
+          <span class="price">$500</span>
+        </li>
+        <li>
+          <span class="description">iPad</span>
+          <span class="price">$800</span>
+        </li>
+      </ul>
+      EOF
     end
 
     context "#items" do

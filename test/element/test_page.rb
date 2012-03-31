@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/helper'
+require File.dirname(__FILE__) + '/../helper'
 require 'capybara'
 
 class TestCapybaraPageObject < Test::Unit::TestCase

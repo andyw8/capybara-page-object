@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../helper'
 class TestImage < Test::Unit::TestCase
   context "Image" do
     setup do
-      @image = load_fixture(CapybaraPageObject::Image)
+      @image = CapybaraPageObject::Image.from_string '<img src="image.jpg" alt="  alt image  ">'
     end
 
     context "#alt" do

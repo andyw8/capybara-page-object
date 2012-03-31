@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../helper'
 
 class TestTable < Test::Unit::TestCase
-  context "" do
+  context "CapybaraPageObject::Table" do
     setup do
       @table = CapybaraPageObject::Table.from_string <<-EOF
       <table id="table_1" class="table_1_class">

@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../helper'
 class TestInput < Test::Unit::TestCase
   context "" do
     setup do
-      @input = load_fixture(CapybaraPageObject::Input)
+      @input = CapybaraPageObject::Input.from_string '<input value="hello">'
     end
 
     should "value" do

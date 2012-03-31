@@ -28,7 +28,7 @@ module Extractors
         end
       end
     end
-    
+
     def data
       r = {}
       native.attributes.each do |k, v|
@@ -37,7 +37,7 @@ module Extractors
       end
       r      
     end
-  
+
     # TODO use method_missing o handle these?
     def all(*args)
       source.all(*args)
