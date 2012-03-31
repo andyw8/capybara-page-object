@@ -1,7 +1,10 @@
+require File.dirname(__FILE__) + '/collections'
+
 module CapybaraPageObject
   class Base
     include Extractors::Common
     include Extractors::PageLevel
+    include CapybaraPageObject::Collections
 
     attr_accessor :source
 

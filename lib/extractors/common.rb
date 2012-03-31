@@ -31,9 +31,11 @@ module Extractors
 
     def data
       r = {}
-      native.attributes.each do |k, v|
-        next unless k.start_with?('data-')
-        r[k.gsub('data-', '')] = v.value
+      if native.respond_to?(:attributes)
+        native.attributes.each do |k, v|
+          next unless k.start_with?('data-')
+          r[k.gsub('data-', '')] = v.value
+        end
       end
       r      
     end

@@ -42,7 +42,7 @@ describe "Form" do
   end
 
   context "#fields" do
-    it "return the fields contained in the form" do
+    it "return the fields contained in the form - inputs, selects and textareas. Excludes button type inputs (submit, reset, etc.)" do
       f = {
         'input_1' => 'value_1',
         'text_input' => 'text_input_value',

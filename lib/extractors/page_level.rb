@@ -1,17 +1,11 @@
+require File.dirname(__FILE__) + '/common'
+
 module Extractors
   module PageLevel
     include Common
     
     def title
       find('title').text
-    end
-
-    def tables(attr={})
-      extract('table', attr, CapybaraPageObject::Table)
-    end
-
-    def forms(attr={})
-      extract('form', attr)
     end
 
     def meta_description
