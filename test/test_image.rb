@@ -2,19 +2,15 @@ require File.dirname(__FILE__) + '/helper'
 require 'capybara'
 
 class TestImage < Test::Unit::TestCase
-  context "" do
+  context "Image" do
     setup do
       @image = load_fixture(CapybaraPageObject::Image)
     end
 
-    should "src" do
-      assert_equal 'image.jpg', @image.src
+    context "#alt" do
+      should "return the alt tag with whitespace stripped" do
+        assert_equal 'alt image', @image.alt
+      end
     end
-    
-    should "alt" do
-      assert_equal 'alt image', @image.alt
-    end
-    
   end
-
 end

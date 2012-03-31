@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/helper'
 require 'capybara'
 
-class TestTable < Test::Unit::TestCase
+class TestInput < Test::Unit::TestCase
   context "" do
     setup do
       @input = load_fixture(CapybaraPageObject::Input)
@@ -11,7 +11,7 @@ class TestTable < Test::Unit::TestCase
       assert_equal 'hello', @input.value
     end
 
-    should "value" do
+    should "blank" do
       assert ! @input.blank?
     end
 

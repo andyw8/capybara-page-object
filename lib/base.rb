@@ -26,6 +26,18 @@ module CapybaraPageObject
       source.visit prefix + path
       self
     end
+    
+    def respond_to?(sym)
+       source.respond_to?(sym) || super(sym)
+     end
+
+    def method_missing(sym, *args, &block)
+      if source.respond_to?(sym)
+        source.send(sym)
+      else
+        super(sym, *args, &block)
+      end
+    end
   end
 
   class MissingPath < RuntimeError

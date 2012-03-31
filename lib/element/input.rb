@@ -3,13 +3,13 @@ module CapybaraPageObject
 
     CHECKABLE = ['radio', 'checkbox']
 
-    # TODO shouldn't need this forwarding
-    def value
-      find('input').value
-    end
-
     def blank?
       '' == value
+    end
+    
+    # TODO find a way to delegate this
+    def value
+      source.find('input').value
     end
 
     def checkable?

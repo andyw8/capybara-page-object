@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler'
+require 'pp'
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -18,7 +19,7 @@ class Test::Unit::TestCase
 end
 
 def load_fixture(model)
-  filename = model.to_s.split('::').last + '.html'
+  filename = model.to_s.split('::').last.downcase + '.html'
   html = File.open(File.dirname(__FILE__) + '/fixtures/' + filename).read
   model.new(Capybara.string(html))
 end

@@ -17,6 +17,7 @@ class TestCommon < Test::Unit::TestCase
       tables = @page.tables(:by => 'id')
       assert_equal CapybaraPageObject::Table, tables['table_1'].class
       assert_equal CapybaraPageObject::Table, tables['table_2'].class
+      # TODO: support @page.tables[:table_1] ? perhaps have a default_key override?
     end
 
     should "forms" do

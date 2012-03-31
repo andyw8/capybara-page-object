@@ -38,6 +38,7 @@ module Extractors
       r      
     end
   
+    # TODO use method_missing o handle these?
     def all(*args)
       source.all(*args)
     end

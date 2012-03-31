@@ -1,0 +1,11 @@
+require 'rubygems'
+require 'factory_girl'
+
+FactoryGirl.define do
+  factory :user do
+    a 1
+    b { a * 2 }
+  end
+end
+
+p FactoryGirl.attributes_for(:user)
