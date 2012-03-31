@@ -1,5 +1,4 @@
 require File.dirname(__FILE__) + '/../helper'
-require 'capybara'
 
 class TestAnchor < Test::Unit::TestCase
   context "Anchor" do

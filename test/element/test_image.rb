@@ -1,5 +1,4 @@
 require File.dirname(__FILE__) + '/../helper'
-require 'capybara'
 
 class TestImage < Test::Unit::TestCase
   context "Image" do
