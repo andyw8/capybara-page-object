@@ -1,4 +1,4 @@
 module CapybaraPageObject
-  class Listitem < CapybaraPageObject::Base
+  class Listitem < CapybaraPageObject::Page
   end
 end

@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Meta < CapybaraPageObject::Base
+  class Meta < CapybaraPageObject::Page
     def key
       source.find('meta')[:name]
     end

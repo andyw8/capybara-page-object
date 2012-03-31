@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Image < CapybaraPageObject::Base
+  class Image < CapybaraPageObject::Page
     def alt
       source.find('img')[:alt].strip
     end

@@ -8,7 +8,7 @@ module CapybaraPageObject
           r[k.gsub('data-', '')] = v.value
         end
       end
-      r      
+      r
     end
   end
 end

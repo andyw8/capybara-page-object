@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Input < CapybaraPageObject::Base
+  class Input < CapybaraPageObject::Page
 
     CHECKABLE = ['radio', 'checkbox']
 

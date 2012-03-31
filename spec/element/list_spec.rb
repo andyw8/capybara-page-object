@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../helper'
 
 module CapybaraPageObject
-  class MyListItem < CapybaraPageObject::Base
+  class MyListItem < CapybaraPageObject::Page
     def value
       source.find('.description').text.strip
     end

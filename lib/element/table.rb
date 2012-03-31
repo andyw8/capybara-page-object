@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Table < CapybaraPageObject::Base
+  class Table < CapybaraPageObject::Page
     def rows(attr={})
       extract('tr', attr)
     end

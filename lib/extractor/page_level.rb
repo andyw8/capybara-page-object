@@ -1,7 +1,5 @@
 module Extractor
-  module PageLevel
-    include Common
-    
+  module PageLevel    
     def title
       find('title').text
     end
