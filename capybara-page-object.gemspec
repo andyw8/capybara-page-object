@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "capybara-page-object"
-  s.version = "0.2.1"
+  s.name = %q{capybara-page-object}
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Andy Waite"]
-  s.date = "2012-03-26"
-  s.description = "Page Objects for Capybara"
-  s.email = "andy@andywaite.com"
+  s.authors = [%q{Andy Waite}]
+  s.date = %q{2012-04-01}
+  s.description = %q{Page Objects for Capybara}
+  s.email = %q{andy@andywaite.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -25,49 +25,77 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "capybara-page-object.gemspec",
-    "lib/base.rb",
     "lib/capybara-page-object.rb",
-    "lib/extractors/common.rb",
-    "lib/extractors/page_level.rb",
-    "lib/image.rb",
-    "lib/page.rb",
-    "lib/table.rb",
-    "test/helper.rb",
-    "test/image.html",
-    "test/page.html",
-    "test/table.html",
-    "test/test_image.rb",
-    "test/test_page.rb",
-    "test/test_table.rb"
+    "lib/collections.rb",
+    "lib/element.rb",
+    "lib/element/anchor.rb",
+    "lib/element/form.rb",
+    "lib/element/form_field.rb",
+    "lib/element/image.rb",
+    "lib/element/input.rb",
+    "lib/element/list.rb",
+    "lib/element/listitem.rb",
+    "lib/element/meta.rb",
+    "lib/element/select.rb",
+    "lib/element/table.rb",
+    "lib/element/textarea.rb",
+    "lib/extractor/common.rb",
+    "lib/extractor/page_level.rb",
+    "lib/html5_data.rb",
+    "lib/key_value.rb",
+    "lib/navigation.rb",
+    "lib/node.rb",
+    "spec/common_spec.rb",
+    "spec/element/anchor_spec.rb",
+    "spec/element/base_spec.rb",
+    "spec/element/form_field_spec.rb",
+    "spec/element/form_spec.rb",
+    "spec/element/image_spec.rb",
+    "spec/element/input_spec.rb",
+    "spec/element/list_spec.rb",
+    "spec/element/listitem_spec.rb",
+    "spec/element/meta_spec.rb",
+    "spec/element/select_spec.rb",
+    "spec/element/table_spec.rb",
+    "spec/element/textarea_spec.rb",
+    "spec/fixtures/node.html",
+    "spec/helper.rb",
+    "spec/node_spec.rb"
   ]
-  s.homepage = "http://github.com/andyw8/capybara-page-object"
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "Page Objects for Capybara"
+  s.homepage = %q{http://github.com/andyw8/capybara-page-object}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.6}
+  s.summary = %q{Page Objects for Capybara}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<capybara>, [">= 0"])
-      s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<rake>, ["~> 0.9.2.2"])
+      s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
     else
       s.add_dependency(%q<capybara>, [">= 0"])
-      s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
+      s.add_dependency(%q<rdoc>, ["~> 3.12"])
     end
   else
     s.add_dependency(%q<capybara>, [">= 0"])
-    s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
+    s.add_dependency(%q<rdoc>, ["~> 3.12"])
   end
 end
 
