@@ -2,6 +2,11 @@ module CapybaraPageObject
   class Input < CapybaraPageObject::Node
 
     CHECKABLE = ['radio', 'checkbox']
+    BUTTON_TYPES = ['submit', 'reset', 'button']
+
+    def key
+      root_node[:name]
+    end
 
     def element_names
       ['input']
@@ -10,10 +15,13 @@ module CapybaraPageObject
     def blank?
       '' == value
     end
-    
-    # TODO find a way to delegate this
+
     def value
-      root_node.value
+      if root_node.native.name == 'textarea'
+        root_node.text
+      else
+        root_node.value
+      end
     end
 
     def checkable?
@@ -23,6 +31,14 @@ module CapybaraPageObject
     
     def untyped?
       root_node[:type].nil?
+    end
+    
+    def typed?
+      !untyped?
+    end
+    
+    def button?
+      typed? && BUTTON_TYPES.include?(root_node[:type])
     end
   end
 end

@@ -2,7 +2,6 @@ module CapybaraPageObject
   class Form < CapybaraPageObject::Node
     
     CHECKABLE = ['radio', 'checkbox']
-    BUTTON_TYPES = ['submit', 'reset', 'button']
 
     def fields
       r = {}
@@ -13,9 +12,10 @@ module CapybaraPageObject
 
     def buttons
       r = []
-      all('input').each do |input|
-        next unless BUTTON_TYPES.include?(input[:type])
-        r << input
+      all('input').each do |input_tag|
+        input = Input.new(input_tag)
+        next unless input.button?
+        r << input_tag
       end
       all('button').each do |button|
         r << button
@@ -38,15 +38,16 @@ module CapybaraPageObject
       r = {}
       all('input').each do |input_tag|
         input = CapybaraPageObject::Input.new(input_tag)
+        next if input.button?
         if input.checkable?
-          r[input_tag[:name]] = !!input_tag.checked?
-        elsif !BUTTON_TYPES.include?(input_tag[:type])
-          r[input_tag[:name]] = input_tag.value
+          r[input.key] = !! input.checked?
+        else
+          r[input.key] = input_tag.value
         end
       end
       r
     end
-    
+
     def textareas
       all('textarea').inject({}) do |result, textarea|
         result.merge textarea[:name] => textarea.value
