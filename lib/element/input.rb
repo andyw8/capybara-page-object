@@ -3,17 +3,21 @@ module CapybaraPageObject
 
     CHECKABLE = ['radio', 'checkbox']
 
+    def element_name
+      'input'
+    end
+
     def blank?
       '' == value
     end
     
     # TODO find a way to delegate this
     def value
-      find('input').value
+      root_node.value
     end
 
     def checkable?
-      type = find('input')[:type]
+      type = root_node[:type]
       type && CHECKABLE.include?(type)
     end
   end

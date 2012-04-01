@@ -36,6 +36,21 @@ module CapybaraPageObject
         super(sym, *args, &block)
       end
     end
+    
+    def classes
+      classes_list = root_node[:class] or return []
+      classes_list.split(' ')
+    end
+    
+    private
+    
+    def element_name
+      raise "You need to override element_name"
+    end
+    
+    def root_node
+      find(element_name)
+    end
   end
 
   class MissingPath < RuntimeError

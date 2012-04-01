@@ -1,11 +1,16 @@
 module CapybaraPageObject
   class Meta < CapybaraPageObject::Node
+    
+    def element_name
+      'meta'
+    end
+    
     def key
-      find('meta')[:name]
+      root_node[:name]
     end
     
     def value
-      find('meta')[:content]
+      root_node[:content]
     end
   end
 end

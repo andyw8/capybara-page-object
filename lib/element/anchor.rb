@@ -1,8 +1,12 @@
 module CapybaraPageObject
   class Anchor < CapybaraPageObject::Node
-    # FIXME must be something better than finding each element
+    
+    def element_name
+      'a'
+    end
+    
     def href
-      find('a')[:href]
+      root_node[:href]
     end
     
     def uri

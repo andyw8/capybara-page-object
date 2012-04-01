@@ -1,7 +1,12 @@
 module CapybaraPageObject
   class Image < CapybaraPageObject::Node
+    
+    def element_name
+      'img'
+    end
+    
     def alt
-      find('img')[:alt].strip
+      root_node[:alt].strip
     end
     
     def key
