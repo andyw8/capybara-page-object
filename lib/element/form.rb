@@ -1,7 +1,5 @@
 module CapybaraPageObject
   class Form < CapybaraPageObject::Node
-    
-    CHECKABLE = ['radio', 'checkbox']
 
     def fields
       r = {}
@@ -12,10 +10,10 @@ module CapybaraPageObject
 
     def buttons
       r = []
-      all('input').each do |input_tag|
-        form_field = FormField.new(input_tag)
+      all('input').each do |element|
+        form_field = FormField.new(element)
         next unless form_field.button?
-        r << input_tag
+        r << element
       end
       all('button').each do |button|
         r << button
@@ -54,12 +52,13 @@ module CapybaraPageObject
         result.merge textarea.key => textarea.value
       end
     end
-    
+
     def selects
-      all('select').inject({}) do |result, select|
-        result.merge select[:name] => select.value
+      all('select').inject({}) do |result, element|
+        select = Select.new(element)
+        # TODO why is select.value not working here?
+        result.merge select.key => element.value
       end
     end
   end
 end
-

@@ -5,5 +5,6 @@ require File.dirname(__FILE__) + '/element/form_field'
 require File.dirname(__FILE__) + '/element/list'
 require File.dirname(__FILE__) + '/element/listitem' # TODO make this two words
 require File.dirname(__FILE__) + '/element/meta'
+require File.dirname(__FILE__) + '/element/select'
 require File.dirname(__FILE__) + '/element/table'
 require File.dirname(__FILE__) + '/element/textarea'

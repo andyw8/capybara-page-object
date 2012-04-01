@@ -59,7 +59,11 @@ describe "Form" do
     end
   end
 
-  it "provide direct access to fields" do
+  it "provides direct access to form's fields" do
     @form.essay.should == 'hello world'
+  end
+
+  it "doesn't respond to nonexistant fields" do
+    @form.should_not respond_to(:nonexistant_field)
   end
 end

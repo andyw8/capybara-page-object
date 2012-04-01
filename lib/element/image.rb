@@ -12,5 +12,9 @@ module CapybaraPageObject
     def key
       alt
     end
+    
+    def value
+      URI(root_node[:src])
+    end
   end
 end
