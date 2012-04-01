@@ -24,4 +24,16 @@ describe "Input" do
     CapybaraPageObject::Input.from_string(text).should_not be_checkable
     CapybaraPageObject::Input.from_string(none).should_not be_checkable
   end
+  
+  context "#untyped" do
+    it "returns true if the input has no type attribute" do
+      input = CapybaraPageObject::Input.from_string '<input type="text">'
+      input.should_not be_untyped
+    end
+    
+    it "returns true if the input has no type attribute" do
+      input = CapybaraPageObject::Input.from_string '<input>'
+      input.should be_untyped
+    end
+  end
 end

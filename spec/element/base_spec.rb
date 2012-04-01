@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../helper'
 
 describe "Base" do
   before do
-    @tag = CapybaraPageObject::Anchor.from_string '<foo id="bar">content</foo>'
+    @tag = CapybaraPageObject::Anchor.from_string '<a id="bar">content</a>'
   end
 
   context "#key" do

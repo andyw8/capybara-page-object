@@ -59,12 +59,15 @@ module CapybaraPageObject
     end
     
     def root_node
+      # TODO still don't fully understand why we need both approaches
       element_names.each do |element_name|
-        if source.has_css?(element_name)
+        if source.native.name == element_name
+          return source.native
+        elsif source.has_css?(element_name)
           return find(element_name)
         end
       end
-      raise "Element name not found"
+      raise "No element matches for #{element_names.join(', ')}"
     end
   end
 

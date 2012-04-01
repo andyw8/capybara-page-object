@@ -36,11 +36,12 @@ module CapybaraPageObject
     
     def inputs
       r = {}
-      all('input').each do |input|
-        if CHECKABLE.include?(input[:type])
-          r[input[:name]] = !!input.checked?
-        elsif !BUTTON_TYPES.include?(input[:type])
-          r[input[:name]] = input.value
+      all('input').each do |input_tag|
+        input = CapybaraPageObject::Input.new(input_tag)
+        if input.checkable?
+          r[input_tag[:name]] = !!input_tag.checked?
+        elsif !BUTTON_TYPES.include?(input_tag[:type])
+          r[input_tag[:name]] = input_tag.value
         end
       end
       r

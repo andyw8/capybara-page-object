@@ -20,5 +20,9 @@ module CapybaraPageObject
       type = root_node[:type]
       type && CHECKABLE.include?(type)
     end
+    
+    def untyped?
+      root_node[:type].nil?
+    end
   end
 end
