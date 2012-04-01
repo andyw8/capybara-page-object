@@ -11,8 +11,8 @@ module CapybaraPageObject
     def buttons
       r = []
       all('input').each do |element|
-        form_field = FormField.new(element)
-        next unless form_field.button?
+        input = Input.new(element)
+        next unless input.button?
         r << element
       end
       all('button').each do |button|
@@ -35,12 +35,12 @@ module CapybaraPageObject
     def inputs
       r = {}
       all('input').each do |input_tag|
-        form_field = FormField.new(input_tag)
-        next if form_field.button?
-        if form_field.checkable?
-          r[form_field.key] = !! form_field.checked?
+        input = Input.new(input_tag)
+        next if input.button?
+        if input.checkable?
+          r[input.key] = !! input.checked?
         else
-          r[form_field.key] = input_tag.value
+          r[input.key] = input_tag.value
         end
       end
       r
