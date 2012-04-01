@@ -13,8 +13,8 @@ module CapybaraPageObject
     def buttons
       r = []
       all('input').each do |input_tag|
-        input = FormField.new(input_tag)
-        next unless input.button?
+        form_field = FormField.new(input_tag)
+        next unless form_field.button?
         r << input_tag
       end
       all('button').each do |button|
@@ -37,20 +37,21 @@ module CapybaraPageObject
     def inputs
       r = {}
       all('input').each do |input_tag|
-        input = CapybaraPageObject::FormField.new(input_tag)
-        next if input.button?
-        if input.checkable?
-          r[input.key] = !! input.checked?
+        form_field = FormField.new(input_tag)
+        next if form_field.button?
+        if form_field.checkable?
+          r[form_field.key] = !! form_field.checked?
         else
-          r[input.key] = input_tag.value
+          r[form_field.key] = input_tag.value
         end
       end
       r
     end
 
     def textareas
-      all('textarea').inject({}) do |result, textarea|
-        result.merge textarea[:name] => textarea.value
+      all('textarea').inject({}) do |result, element|
+        textarea = Textarea.new(element)
+        result.merge textarea.key => textarea.value
       end
     end
     

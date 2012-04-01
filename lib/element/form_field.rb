@@ -9,7 +9,7 @@ module CapybaraPageObject
     end
 
     def element_names
-      ['input']
+      ['input', 'select', 'textarea']
     end
 
     def blank?
