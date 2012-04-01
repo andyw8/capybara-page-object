@@ -8,6 +8,14 @@ describe "Input" do
     end
   end
   
+  # TODO get this working
+  # context "#value" do
+  #   it "delegates to the the Capybara::Node::Simple" do
+  #     i = CapybaraPageObject::Input.from_string '<input name="foo" value="bar"/>'
+  #     i.value.should == 'bar'
+  #   end
+  # end
+
   context "#untyped" do
     it "is true if the input has no type attribute" do
       input = CapybaraPageObject::Input.from_string '<input type="text">'
