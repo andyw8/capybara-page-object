@@ -16,12 +16,8 @@ module CapybaraPageObject
       root_node[:type].nil?
     end
     
-    def typed?
-      !untyped?
-    end
-    
     def button?
-      typed? && BUTTON_TYPES.include?(root_node[:type])
+      BUTTON_TYPES.include?(root_node[:type])
     end
 
     def checkable?

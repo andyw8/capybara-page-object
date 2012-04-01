@@ -13,16 +13,3 @@ require 'rspec'
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'capybara-page-object'
-
-
-
-def load_fixture(arg)
-  if arg.class == String
-    Capybara.string(arg)
-  else
-    filename = arg.to_s.split('::').last.downcase + '.html'
-    model = arg
-    html = File.open(File.dirname(__FILE__) + '/fixtures/' + filename).read
-    model.new(Capybara.string(html))
-  end
-end

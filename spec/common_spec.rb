@@ -2,7 +2,8 @@ require File.dirname(__FILE__) + '/helper'
 
 describe "Page" do
   before do
-    @page = load_fixture(CapybaraPageObject::Node)
+    html = File.open(File.dirname(__FILE__) + '/fixtures/node.html').read
+    @page = CapybaraPageObject::Node.from_string html    
   end
 
   context "#tables" do

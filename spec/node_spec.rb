@@ -2,22 +2,27 @@ require File.dirname(__FILE__) + '/helper'
 
 describe "Page" do
   context "Using the example.html" do
-    before do
-      @page = load_fixture(CapybaraPageObject::Node)
+    context "#title" do
+      it "returns the page title" do
+        node = CapybaraPageObject::Node.from_string '<title>Hello World</title>'
+        node.title.should == 'Hello World'
+      end
     end
 
-    it "page title" do
-      @page.title.should == 'Hello World'
+    context "#meta_description" do
+      it "returns the meta description" do
+        node = CapybaraPageObject::Node.from_string '<meta name="description" content="meta description">'
+        node.meta_description.should == "meta description"
+      end
     end
 
-    it "meta_description" do
-      @page.meta_description.should == "meta description"
+    context "#meta_keywords" do
+      it "returns the meta keywords as an array" do
+        node = CapybaraPageObject::Node.from_string '<meta name="keywords" content="keyword 1, keyword 2">'
+        node.meta_keywords.should == ["keyword 1", "keyword 2"]
+      end
     end
 
-    it "meta_keywords" do
-      @page.meta_keywords.should == ["meta keyword 1", "meta keyword 2"]
-    end
-    
     context "#classes" do
       it "returns an array of class names" do
         anchor = CapybaraPageObject::Anchor.from_string '<a class="foo bar">'
@@ -31,17 +36,9 @@ describe "Page" do
         anchor = CapybaraPageObject::Anchor.from_string '<a class="  ">'
         anchor.classes.should be_empty
       end
-      it "returns an empty array classes attribute is not present" do
+      it "returns an empty array when the classes attribute is not present" do
         anchor = CapybaraPageObject::Anchor.from_string '<a/>'
         anchor.classes.should be_empty
-      end
-    end
-
-    context "#path" do
-      it "raise exception if path not defined" do
-        lambda do
-          @page.path
-        end.should raise_error(CapybaraPageObject::MissingPath)
       end
     end
   end

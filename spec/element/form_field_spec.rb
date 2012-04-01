@@ -8,10 +8,8 @@ describe "FormField" do
   end
 
   context "#value" do
-    it "returns the value attribute if the form field is an input" do
+    it "delegates" do
       @input.value.should == 'hello'
-    end
-    it "returns the tag content if the form field is a textarea" do
       @textarea.value.should == 'foo'
     end
   end

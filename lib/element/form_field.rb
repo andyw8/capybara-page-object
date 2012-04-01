@@ -14,11 +14,7 @@ module CapybaraPageObject
     end
 
     def value
-      if root_node.native.name == 'textarea'
-        root_node.text
-      else
-        root_node.value
-      end
+      root_node.value
     end
   end
 end

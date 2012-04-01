@@ -59,7 +59,7 @@ describe "Form" do
     end
   end
 
-  it "provides direct access to form's fields" do
+  it "provides direct read access to form's fields" do
     @form.essay.should == 'hello world'
   end
 
