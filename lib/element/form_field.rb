@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Input < CapybaraPageObject::Node
+  class FormField < CapybaraPageObject::Node
 
     CHECKABLE = ['radio', 'checkbox']
     BUTTON_TYPES = ['submit', 'reset', 'button']
