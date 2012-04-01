@@ -26,8 +26,8 @@ module CapybaraPageObject
     end
     
     def respond_to?(sym)
-       source.respond_to?(sym) || super(sym)
-     end
+      source.respond_to?(sym) || super(sym)
+    end
 
     def method_missing(sym, *args, &block)
       if source.respond_to?(sym)
@@ -42,14 +42,29 @@ module CapybaraPageObject
       classes_list.split(' ')
     end
     
+    def children(opts={})
+      factory = opts[:factory]
+      return all(child_node) unless factory
+      r = []
+      all(child_node).each do |li|
+        r << factory.new(li)
+      end
+      r
+    end
+    
     private
     
-    def element_name
-      raise "You need to override element_name"
+    def element_names
+      raise "You need to override element_names"
     end
     
     def root_node
-      find(element_name)
+      element_names.each do |element_name|
+        if source.has_css?(element_name)
+          return find(element_name)
+        end
+      end
+      raise "Element name not found"
     end
   end
 

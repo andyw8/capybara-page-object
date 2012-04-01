@@ -3,8 +3,8 @@ module CapybaraPageObject
 
     CHECKABLE = ['radio', 'checkbox']
 
-    def element_name
-      'input'
+    def element_names
+      ['input']
     end
 
     def blank?

@@ -1,8 +1,8 @@
 module CapybaraPageObject
   class Meta < CapybaraPageObject::Node
     
-    def element_name
-      'meta'
+    def element_names
+      ['meta']
     end
     
     def key

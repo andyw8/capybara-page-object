@@ -1,8 +1,8 @@
 module CapybaraPageObject
   class Image < CapybaraPageObject::Node
     
-    def element_name
-      'img'
+    def element_names
+      ['img']
     end
     
     def alt

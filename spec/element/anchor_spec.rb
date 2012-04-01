@@ -15,9 +15,6 @@ describe "Anchor" do
   context "#uri" do
     it "return a URI object" do
       @anchor.uri.class.should == URI::Generic
-    end
-
-    it "extract the URI components" do
       @anchor.uri.path.should == 'hello.html'
     end
   end

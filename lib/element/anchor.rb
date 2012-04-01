@@ -1,8 +1,8 @@
 module CapybaraPageObject
   class Anchor < CapybaraPageObject::Node
     
-    def element_name
-      'a'
+    def element_names
+      ['a']
     end
     
     def href

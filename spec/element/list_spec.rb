@@ -38,5 +38,10 @@ describe "List" do
     it "be the id" do
       @list.key.should == 'products'
     end
+    
+    it "should handle ordered list (ol)" do
+      list = CapybaraPageObject::List.from_string '<ol id="ordered"></ol>'
+      list.key.should == 'ordered'
+    end
   end
 end
