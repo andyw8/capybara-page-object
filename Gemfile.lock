@@ -39,7 +39,6 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
-    shoulda (2.11.3)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -52,4 +51,3 @@ DEPENDENCIES
   jeweler (~> 1.6.4)
   rcov
   rspec
-  shoulda
