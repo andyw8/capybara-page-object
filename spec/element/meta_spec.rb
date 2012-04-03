@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../helper'
+require 'helper'
 
 describe "Meta" do
   context "Meta" do

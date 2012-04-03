@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../helper'
+require 'helper'
 
 describe "CapybaraPageObject::Table" do
   before do

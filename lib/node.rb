@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + '/collections'
-require File.dirname(__FILE__) + '/navigation'
-require File.dirname(__FILE__) + '/key_value'
-require File.dirname(__FILE__) + '/html5_data'
-require File.dirname(__FILE__) + '/extractor/common'
-require File.dirname(__FILE__) + '/extractor/page_level'
+require 'collections'
+require 'navigation'
+require 'key_value'
+require 'html5_data'
+require 'extractor/common'
+require 'extractor/page_level'
 
 module CapybaraPageObject
   class Node

@@ -1,7 +1,7 @@
 require 'capybara'
-require File.dirname(__FILE__) + '/node'
-require File.dirname(__FILE__) + '/element'
-require File.dirname(__FILE__) + '/html5_data'
+require 'node'
+require 'element'
+require 'html5_data'
 
 module Capybara
   module Node
