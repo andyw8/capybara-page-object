@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Listitem < CapybaraPageObject::Node
+  class ListItem < CapybaraPageObject::Node
     def element_names
       ['li']
     end

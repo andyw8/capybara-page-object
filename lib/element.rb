@@ -4,7 +4,7 @@ require 'element/image'
 require 'element/form_field'
 require 'element/input'
 require 'element/list'
-require 'element/listitem' # TODO make this two words
+require 'element/list_item'
 require 'element/meta'
 require 'element/select'
 require 'element/table'
