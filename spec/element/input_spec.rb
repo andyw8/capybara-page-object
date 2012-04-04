@@ -23,6 +23,25 @@ describe "Input" do
     end
   end
 
+  context "#blank?" do
+    it "is true if the value is an empty string" do
+      input = CapybaraPageObject::Input.from_string '<input name="foo" value="">'
+      input.should be_blank
+    end
+    it "is true if the value is not present" do
+      input = CapybaraPageObject::Input.from_string '<input name="foo">'
+      input.should be_blank
+    end
+    it "is true if the value is only whitespace" do
+      input = CapybaraPageObject::Input.from_string '<input name="foo" value="  \n \t ">'
+      input.should_not be_blank
+    end
+    it "is false if the value is an non-empty string" do
+      input = CapybaraPageObject::Input.from_string '<input name="foo" value="bar">'
+      input.should_not be_blank
+    end
+  end
+
   context "#value=(value)" do
     it "it allows the value to be set" do
       input = CapybaraPageObject::Input.from_string '<input name="foo" value="old_bar">'

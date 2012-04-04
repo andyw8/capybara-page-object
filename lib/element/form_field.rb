@@ -10,7 +10,7 @@ module CapybaraPageObject
     end
 
     def blank?
-      '' == value
+      value.nil? || '' == value
     end
 
     def value

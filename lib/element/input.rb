@@ -1,19 +1,11 @@
 module CapybaraPageObject
-  class Input < CapybaraPageObject::Node
+  class Input < CapybaraPageObject::FormField
     
     BUTTON_TYPES = ['submit', 'reset', 'button']
     CHECKABLE_TYPES = ['radio', 'checkbox']
 
     def element_names
       ['input']
-    end
-    
-    def key
-      root_node[:name]
-    end
-    
-    def value
-      root_node.value
     end
 
     def clear!
@@ -27,7 +19,7 @@ module CapybaraPageObject
     def untyped?
       root_node[:type].nil?
     end
-    
+
     def button?
       BUTTON_TYPES.include?(root_node[:type])
     end
