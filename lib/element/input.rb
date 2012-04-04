@@ -1,19 +1,14 @@
+require 'element/text_based_input'
+
 module CapybaraPageObject
-  class Input < CapybaraPageObject::FormField
+  class Input < CapybaraPageObject::FormField  
+    include TextBasedInput
     
     BUTTON_TYPES = ['submit', 'reset', 'button']
     CHECKABLE_TYPES = ['radio', 'checkbox']
 
     def element_names
       ['input']
-    end
-
-    def clear!
-      source.fill_in key, :with => ''
-    end
-
-    def value=(value)
-      source.fill_in key, :with => value
     end
 
     def untyped?
