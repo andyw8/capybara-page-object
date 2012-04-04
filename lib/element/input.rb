@@ -16,6 +16,10 @@ module CapybaraPageObject
       root_node.value
     end
 
+    def clear!
+      source.fill_in key, :with => ''
+    end
+
     def value=(value)
       source.fill_in key, :with => value
     end
