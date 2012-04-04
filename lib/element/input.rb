@@ -12,6 +12,14 @@ module CapybaraPageObject
       root_node[:name]
     end
     
+    def value
+      root_node.value
+    end
+
+    def value=(value)
+      source.fill_in key, :with => value
+    end
+
     def untyped?
       root_node[:type].nil?
     end

@@ -7,14 +7,23 @@ describe "Input" do
       i.key.should == 'foo'
     end
   end
-  
-  # TODO get this working
-  # context "#value" do
-  #   it "delegates to the the Capybara::Node::Simple" do
-  #     i = CapybaraPageObject::Input.from_string '<input name="foo" value="bar"/>'
-  #     i.value.should == 'bar'
-  #   end
-  # end
+
+  context "#value" do
+    it "it returns the value attribute" do
+      input = CapybaraPageObject::Input.from_string '<input value="foo">'
+      input.value.should == 'foo'
+    end
+  end
+
+  context "#value=(value)" do
+    it "it allows the value to be set" do
+      input = CapybaraPageObject::Input.from_string '<input value="foo">'
+      # TODO not sure why this extra nil is needed
+      new_value = 'bar'
+      input.source.should_receive(:fill_in).with(nil, {:with => new_value})
+      input.value = new_value
+    end
+  end
 
   context "#untyped" do
     it "is true if the input has no type attribute" do
@@ -27,7 +36,7 @@ describe "Input" do
       input.should be_untyped
     end
   end
-  
+
   context "#checkable?" do
     it "is true for a checkbox" do
       checkbox = '<input type="checkbox">'
