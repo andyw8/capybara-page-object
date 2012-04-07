@@ -1,7 +1,7 @@
 module CapybaraPageObject
   module Navigation
     def path(*args)
-      raise MissingPath, "You need to override this"
+      raise MissingPath, "You need to override #path in #{self.class}"
     end
 
     def prefix
