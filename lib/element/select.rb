@@ -8,7 +8,7 @@ module CapybaraPageObject
     def key
       root_node[:name]
     end
-    
+
     def value
       root_node.value
     end

@@ -13,9 +13,5 @@ module CapybaraPageObject
     def items(*args)
       children(*args)
     end
-    
-    def key
-      root_node[:id]
-    end
   end
 end
