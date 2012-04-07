@@ -16,7 +16,7 @@ module CapybaraPageObject
     end
 
     def button?
-      BUTTON_TYPES.include?(root_node[:type])
+      BUTTON_TYPES.include?(source[:type])
     end
 
     def checkable?

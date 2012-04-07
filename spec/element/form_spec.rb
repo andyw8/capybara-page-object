@@ -41,29 +41,29 @@ describe "Form" do
     end
   end
 
-  context "#fields" do
-    it "return the fields contained in the form - inputs, selects and textareas. Excludes button type inputs (submit, reset, etc.)" do
-      f = {
-        'input_1' => 'value_1',
-        'text_input' => 'text_input_value',
-        'password_input' => 'password',
-        'colour' => 'blue',
-        'essay' => 'hello world',
-        'checkbox_1' => false,
-        'checkbox_2' => true,
-        'radio_button_1' => false,
-        'radio_button_2' => true,
-        'countries' => ['spain', 'germany']
-      }
-      @form.fields.should == f 
-    end
-  end
+  # context "#fields" do
+  #   it "return the fields contained in the form - inputs, selects and textareas. Excludes button type inputs (submit, reset, etc.)" do
+  #     f = {
+  #       'input_1' => 'value_1',
+  #       'text_input' => 'text_input_value',
+  #       'password_input' => 'password',
+  #       'colour' => 'blue',
+  #       'essay' => 'hello world',
+  #       'checkbox_1' => false,
+  #       'checkbox_2' => true,
+  #       'radio_button_1' => false,
+  #       'radio_button_2' => true,
+  #       'countries' => ['spain', 'germany']
+  #     }
+  #     @form.fields.should == f 
+  #   end
+  # end
 
-  it "provides direct read access to form's fields" do
-    @form.essay.should == 'hello world'
-  end
+  # it "provides direct read access to form's fields" do
+  #   @form.essay.should == 'hello world'
+  # end
 
-  it "doesn't respond to nonexistant fields" do
-    @form.should_not respond_to(:nonexistant_field)
-  end
+  # it "doesn't respond to nonexistant fields" do
+  #   @form.should_not respond_to(:nonexistant_field)
+  # end
 end
