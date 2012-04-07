@@ -28,12 +28,8 @@ describe "List" do
     it "return the list items" do
       @list.should have(2).items
     end
-    
-    it "accept a custom list item object" do
-      @list.items({:factory => CapybaraPageObject::MyListItem}).first.value.should == "iPhone"
-    end
   end
-  
+
   context "#key" do
     it "be the id" do
       @list.key.should == 'products'

@@ -11,7 +11,7 @@ module CapybaraPageObject
     end
     
     def items(*args)
-      children(*args)
+      all('li').map { |e| ListItem.new(e) }
     end
   end
 end

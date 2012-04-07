@@ -47,16 +47,6 @@ module CapybaraPageObject
       classes_list.split(' ')
     end
 
-    def children(opts={})
-      factory = opts[:factory]
-      return all(child_node) unless factory
-      r = []
-      all(child_node).each do |li|
-        r << factory.new(li)
-      end
-      r
-    end
-
     private
 
     def element_names
