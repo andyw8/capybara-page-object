@@ -11,7 +11,6 @@ describe "ListItem" do
     @list_item = CapybaraPageObject::ListItem.from_string s, 'li'
   end
 
-  # TODO better way of handling whitespace
   context "#text" do
     it "return the tag's innter HTML content stripped of whitespace" do
       @list_item.text.should == "iPhone\n      $500"
