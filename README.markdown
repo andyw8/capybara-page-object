@@ -47,14 +47,14 @@ features/support/pages/products/index.rb
 
 ```ruby
 module Pages
-  modules Products
+  module Products
     class Index < CapybaraPageObject::Page
       def path
         '/products'
       end
 
       def product_titles
-        all('.product .title').collect(&:text)
+        all('.products .title').collect(&:text)
       end
     end
   end
