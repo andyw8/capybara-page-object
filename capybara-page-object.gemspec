@@ -5,62 +5,69 @@
 
 Gem::Specification.new do |s|
   s.name = %q{capybara-page-object}
-  s.version = "0.3.0"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Andy Waite}]
-  s.date = %q{2012-04-01}
+  s.date = %q{2012-04-08}
   s.description = %q{Page Objects for Capybara}
   s.email = %q{andy@andywaite.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.markdown"
   ]
   s.files = [
     ".document",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.markdown",
     "Rakefile",
     "VERSION",
     "capybara-page-object.gemspec",
     "lib/capybara-page-object.rb",
     "lib/collections.rb",
+    "lib/delegators.rb",
     "lib/element.rb",
+    "lib/element/TODO.md",
     "lib/element/anchor.rb",
     "lib/element/form.rb",
     "lib/element/form_field.rb",
+    "lib/element/head.rb",
     "lib/element/image.rb",
     "lib/element/input.rb",
     "lib/element/list.rb",
-    "lib/element/listitem.rb",
+    "lib/element/list_item.rb",
     "lib/element/meta.rb",
     "lib/element/select.rb",
     "lib/element/table.rb",
+    "lib/element/table_header.rb",
+    "lib/element/table_row.rb",
+    "lib/element/text_based_input.rb",
     "lib/element/textarea.rb",
-    "lib/extractor/common.rb",
-    "lib/extractor/page_level.rb",
     "lib/html5_data.rb",
     "lib/key_value.rb",
-    "lib/navigation.rb",
     "lib/node.rb",
+    "lib/page.rb",
     "spec/common_spec.rb",
     "spec/element/anchor_spec.rb",
     "spec/element/base_spec.rb",
     "spec/element/form_field_spec.rb",
     "spec/element/form_spec.rb",
+    "spec/element/head_spec.rb",
     "spec/element/image_spec.rb",
     "spec/element/input_spec.rb",
+    "spec/element/list_item_spec.rb",
     "spec/element/list_spec.rb",
-    "spec/element/listitem_spec.rb",
     "spec/element/meta_spec.rb",
     "spec/element/select_spec.rb",
+    "spec/element/table_row_spec.rb",
     "spec/element/table_spec.rb",
     "spec/element/textarea_spec.rb",
     "spec/fixtures/node.html",
     "spec/helper.rb",
-    "spec/node_spec.rb"
+    "spec/node_spec.rb",
+    "spec/page_spec.rb"
   ]
   s.homepage = %q{http://github.com/andyw8/capybara-page-object}
   s.licenses = [%q{MIT}]
