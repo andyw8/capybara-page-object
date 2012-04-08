@@ -41,19 +41,19 @@ features/step_definitions/product_steps.rb
 
 features/support/pages/products/index.rb
 
-  module Pages
-    modules Products
-      class Index < CapybaraPageObject::Page
-        def path
-          '/products'
-        end
+    module Pages
+      modules Products
+        class Index < CapybaraPageObject::Page
+          def path
+            '/products'
+          end
 
-        def product_titles
-          all('.product .title').collect(&:text)
+          def product_titles
+            all('.product .title').collect(&:text)
+          end
         end
       end
     end
-  end
 
 
 ## Contributing to capybara-page-object ##
