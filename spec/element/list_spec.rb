@@ -10,7 +10,7 @@ end
 
 describe "List" do
   before do
-    @list = CapybaraPageObject::List.from_string <<-EOF
+    html = <<-EOF
     <ul id="products">
       <li>
         <span class="description">iPhone</span>
@@ -22,6 +22,7 @@ describe "List" do
       </li>
     </ul>
     EOF
+    @list = CapybaraPageObject::List.from_string html, 'ul'
   end
 
   context "#items" do
@@ -36,7 +37,7 @@ describe "List" do
     end
     
     it "should handle ordered list (ol)" do
-      list = CapybaraPageObject::List.from_string '<ol id="ordered"></ol>'
+      list = CapybaraPageObject::List.from_string '<ol id="ordered"></ol>', 'ol'
       list.key.should == 'ordered'
     end
   end

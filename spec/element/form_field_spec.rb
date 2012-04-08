@@ -2,9 +2,9 @@ require 'helper'
 
 describe "FormField" do
   before do
-    @input = CapybaraPageObject::FormField.from_string '<input value="hello">'
-    @textarea = CapybaraPageObject::FormField.from_string '<textarea>foo</textarea>'
-    @blank_textarea = CapybaraPageObject::FormField.from_string '<textarea></textarea>'
+    @input = CapybaraPageObject::FormField.from_string '<input value="hello">', 'input'
+    @textarea = CapybaraPageObject::FormField.from_string '<textarea>foo</textarea>', 'textarea'
+    @blank_textarea = CapybaraPageObject::FormField.from_string '<textarea></textarea>', 'textarea'
   end
 
   context "#value" do

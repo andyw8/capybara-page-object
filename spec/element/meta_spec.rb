@@ -3,9 +3,10 @@ require 'helper'
 describe "Meta" do
   context "Meta" do
     before do
-      @meta = CapybaraPageObject::Meta.from_string <<-EOF
+      s = <<-EOF
       <meta name="description" content="my description">
       EOF
+      @meta = CapybaraPageObject::Meta.from_string s, 'meta'
     end
 
     context "#key" do

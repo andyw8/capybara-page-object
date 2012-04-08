@@ -1,11 +1,7 @@
 module CapybaraPageObject
   class Anchor < CapybaraPageObject::Node
-    def element_names
-      ['a']
-    end
-    
     def link
-      URI(root_node[:href])
+      URI(source[:href])
     end
   end
 end

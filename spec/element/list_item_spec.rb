@@ -2,12 +2,13 @@ require 'helper'
 
 describe "ListItem" do
   before do
-    @list_item = CapybaraPageObject::ListItem.from_string <<-EOF
+    s = <<-EOF
     <li id="foo">
       <span class="description">iPhone</span>
       <span class="price">$500</span>
     </li>
     EOF
+    @list_item = CapybaraPageObject::ListItem.from_string s, 'li'
   end
 
   # TODO better way of handling whitespace

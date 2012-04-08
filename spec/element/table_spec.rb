@@ -2,7 +2,7 @@ require 'helper'
 
 describe "CapybaraPageObject::Table" do
   before do
-    @table = CapybaraPageObject::Table.from_string <<-EOF
+    s = <<-EOF
     <table id="table_1" class="table_1_class">
       <tr id="table_1_tr_1">
         <th id="table_1_th_1">TH1</th>
@@ -14,8 +14,9 @@ describe "CapybaraPageObject::Table" do
       </tr>
     </table>
     EOF
+    @table = CapybaraPageObject::Table.from_string s, 'table'
   end
-  
+
   context "#rows" do
     it "return the table's rows" do
       @table.rows.keys.should =~ ['table_1_tr_1', 'table_1_tr_2']

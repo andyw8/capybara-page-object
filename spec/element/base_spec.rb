@@ -2,7 +2,7 @@ require 'helper'
 
 describe "Base" do
   before do
-    @tag = CapybaraPageObject::Anchor.from_string '<a id="bar">content</a>'
+    @tag = CapybaraPageObject::Anchor.from_string '<a id="bar">content</a>', 'a'
   end
 
   context "#key" do

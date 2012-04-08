@@ -1,16 +1,11 @@
 module CapybaraPageObject
   class Select < CapybaraPageObject::Node
-    
-    def element_names
-      ['select']
-    end
-    
     def key
-      root_node[:name]
+      source[:name]
     end
 
     def value
-      root_node.value
+      source.value
     end
   end
 end

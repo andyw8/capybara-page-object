@@ -2,7 +2,7 @@ require 'helper'
 
 describe "Form" do
   before do
-    @form = CapybaraPageObject::Form.from_string <<-EOF
+    html = <<-EOF
     <form>
       <input name="input_1" value="value_1">
       <input type="text" name="text_input" value="text_input_value">
@@ -33,6 +33,7 @@ describe "Form" do
       <button>button 2</button>
     </form>
     EOF
+    @form = CapybaraPageObject::Form.from_string html, 'form'
   end
 
   context "#buttons" do

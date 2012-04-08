@@ -3,7 +3,7 @@ require 'helper'
 describe "Page" do
   before do
     html = File.open(File.dirname(__FILE__) + '/fixtures/node.html').read
-    @page = CapybaraPageObject::Node.from_string html    
+    @page = CapybaraPageObject::Node.from_string html, 'body'
   end
 
   context "#tables" do
@@ -29,13 +29,16 @@ describe "Page" do
 
   context "#data" do
     it "returns an empty hash if the element has no HTML5 data attributes" do
-      e = Capybara.string('<foo/>')
-      e.data.should == {}
+      html = '<div foo="bar"/>'
+      @fragment = CapybaraPageObject::Node.from_string html, 'div'
+      @fragment.data.should == {}
     end
 
     it "returns a hash of the elements HTML5 data attributes" do
+      html = '<div id="data" data-foo="a" data-bar="b" data-cat>Some data</div>'
+      @fragment = CapybaraPageObject::Node.from_string html, 'div'
       h = {'foo' => 'a', 'bar' => 'b', 'cat' => ''}
-      @page.find('#data').data.should == h 
+      @fragment.data.should == h 
     end
   end
 end

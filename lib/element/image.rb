@@ -1,9 +1,5 @@
 module CapybaraPageObject
   class Image < CapybaraPageObject::Node
-    def element_names
-      ['img']
-    end
-
     def key
       alt
     end

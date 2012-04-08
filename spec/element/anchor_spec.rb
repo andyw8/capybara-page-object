@@ -3,7 +3,7 @@ require 'helper'
 describe "Anchor" do
     
   before do
-    @anchor = CapybaraPageObject::Anchor.from_string('<a href="hello.html">')
+    @anchor = CapybaraPageObject::Anchor.from_string('<a href="hello.html">', 'a')
   end
 
   context "#link" do

@@ -10,7 +10,7 @@ module CapybaraPageObject
     end
 
     def key
-      root_node[:name]
+      source[:name]
     end
   end
 end

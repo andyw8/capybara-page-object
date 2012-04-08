@@ -2,8 +2,8 @@ require 'helper'
 
 describe "Textarea" do
   before do
-    @textarea = CapybaraPageObject::Textarea.from_string '<textarea name="foo">bar</textarea>'
-    @blank_textarea = CapybaraPageObject::Textarea.from_string '<textarea name="foo"></textarea>'
+    @textarea = CapybaraPageObject::Textarea.from_string '<textarea name="foo">bar</textarea>', 'textarea'
+    @blank_textarea = CapybaraPageObject::Textarea.from_string '<textarea name="foo"></textarea>', 'textarea'
   end
 
   context "#key" do

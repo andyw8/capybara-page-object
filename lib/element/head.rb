@@ -1,8 +1,5 @@
 module CapybaraPageObject
   class Head < CapybaraPageObject::Node
-    def element_names
-      ['head']
-    end   
     def title
       find('title').text
     end

@@ -7,9 +7,8 @@ module Delegators
   def find(*args)
     source.find(*args)
   end
-  
-  # TODO why is this needed?
+
   def text
-    root_node.text
+    source.text
   end
 end

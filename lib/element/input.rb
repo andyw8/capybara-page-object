@@ -7,12 +7,8 @@ module CapybaraPageObject
     BUTTON_TYPES = ['submit', 'reset', 'button']
     CHECKABLE_TYPES = ['radio', 'checkbox']
 
-    def element_names
-      ['input']
-    end
-
     def untyped?
-      root_node[:type].nil?
+      source[:type].nil?
     end
 
     def button?
@@ -20,7 +16,7 @@ module CapybaraPageObject
     end
 
     def checkable?
-      type = root_node[:type]
+      type = source[:type]
       type && CHECKABLE_TYPES.include?(type)
     end
   end
