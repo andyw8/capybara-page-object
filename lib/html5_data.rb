@@ -1,13 +1,10 @@
 module CapybaraPageObject
   module HTML5Data
     def data
-      r = {}
-      
-      source.native.attributes.each do |k, v|
+      source.native.attributes.each_with_object({}) do |(k, v), hash|
         next unless k.start_with?('data-')
-        r[k.gsub('data-', '')] = v.value
+        hash[k.gsub('data-', '')] = v.value
       end
-      r
     end
   end
 end

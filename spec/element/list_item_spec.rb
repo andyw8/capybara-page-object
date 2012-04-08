@@ -13,14 +13,8 @@ describe "ListItem" do
 
   # TODO better way of handling whitespace
   context "#text" do
-    it "return the text of the list" do
-      @list_item.text.strip.should == "iPhone\n      $500"
-    end
-  end
-  
-  context "#key" do
-    it "return the id attribute" do
-      @list_item.key.should == 'foo'
+    it "return the tag's innter HTML content stripped of whitespace" do
+      @list_item.text.should == "iPhone\n      $500"
     end
   end
 end

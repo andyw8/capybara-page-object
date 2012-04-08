@@ -21,8 +21,8 @@ module CapybaraPageObject
     end
 
     def respond_to?(sym)
-       fields.has_key?(sym.to_s) || super(sym)
-     end
+      fields.has_key?(sym.to_s) || super(sym)
+    end
 
     def method_missing(sym, *args, &block)
       return fields[sym.to_s] if fields.has_key?(sym.to_s)
@@ -32,17 +32,15 @@ module CapybaraPageObject
     private
     
     def inputs
-      r = {}
-      all('input').each do |input_tag|
+      all('input').each_with_object do |input_tag, hash|
         input = Input.new(input_tag)
         next if input.button?
         if input.checkable?
-          r[input.key] = !! input.checked?
+          hash[input.key] = !! input.checked?
         else
-          r[input.key] = input_tag.value
+          hash[input.key] = input_tag.value
         end
       end
-      r
     end
 
     def textareas
@@ -55,8 +53,7 @@ module CapybaraPageObject
     def selects
       all('select').inject({}) do |result, element|
         select = Select.new(element)
-        # TODO why is select.value not working here?
-        result.merge select.key => element.value
+        result.merge select.key => select.value
       end
     end
   end

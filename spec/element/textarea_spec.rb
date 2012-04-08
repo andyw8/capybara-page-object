@@ -11,7 +11,7 @@ describe "Textarea" do
       @textarea.key.should == 'foo'
     end
   end
-  
+
   context "#value" do
     it "returns the content" do
       @textarea.value.should == 'bar'
