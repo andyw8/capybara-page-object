@@ -3,6 +3,7 @@ module CapybaraPageObject
     def rows
       all('tr').each_with_object({}) do |e, hash|
         tr = CapybaraPageObject::TableRow.new(e)
+        next if tr.header?
         hash[tr.key] = tr
       end
     end
