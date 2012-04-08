@@ -1,5 +1,4 @@
 require 'collections'
-require 'navigation'
 require 'key_value'
 require 'html5_data'
 require 'delegators'
@@ -8,7 +7,6 @@ module CapybaraPageObject
   class Node < Capybara::Node::Element
     include Delegators
     include CapybaraPageObject::Collections
-    include CapybaraPageObject::Navigation
     include CapybaraPageObject::HTML5Data
 
     attr_accessor :source
