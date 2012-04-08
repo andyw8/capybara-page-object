@@ -3,16 +3,13 @@ require 'navigation'
 require 'key_value'
 require 'html5_data'
 require 'extractor/common'
-require 'extractor/page_level'
 
 module CapybaraPageObject
   class Node < Capybara::Node::Element
     include Extractor::Common
-    include Extractor::PageLevel
     include CapybaraPageObject::Collections
     include CapybaraPageObject::Navigation
     include CapybaraPageObject::HTML5Data
-    include Extractor::PageLevel
 
     attr_accessor :source
 
