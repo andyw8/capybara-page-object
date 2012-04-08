@@ -12,49 +12,54 @@ Gemfile
 
 features/catalog.feature
 
-    Feature: Catalog
+```gherkin
+Feature: Catalog
 
-      Scenario: Products available
+  Scenario: Products available
 
-        Given the products:
-          | iPhone |
-          | iPad   |
-        When I visit the store
-        Then those products should be listed
+    Given the products:
+      | iPhone |
+      | iPad   |
+    When I visit the store
+    Then those products should be listed
+```
 
 features/step_definitions/product_steps.rb
 
-    Given /^the products:$/ do |table|
-      @products = []
-      table.raw.flatten.each do |p|
-        @products << Product.create!(:title => p)
-      end
-    end
+```ruby
+Given /^the products:$/ do |table|
+  @products = []
+  table.raw.flatten.each do |p|
+    @products << Product.create!(:title => p)
+  end
+end
 
-    When /^I visit the store$/ do
-      @page = Pages::Products::Index.visit
-    end
+When /^I visit the store$/ do
+  @page = Pages::Products::Index.visit
+end
 
-    Then /^those products should be listed$/ do
-      @page.product_titles.should == @products.collect{ |p| p.title }
-    end
+Then /^those products should be listed$/ do
+  @page.product_titles.should == @products.collect{ |p| p.title }
+end
+```
 
 features/support/pages/products/index.rb
 
-    module Pages
-      modules Products
-        class Index < CapybaraPageObject::Page
-          def path
-            '/products'
-          end
+```ruby
+module Pages
+  modules Products
+    class Index < CapybaraPageObject::Page
+      def path
+        '/products'
+      end
 
-          def product_titles
-            all('.product .title').collect(&:text)
-          end
-        end
+      def product_titles
+        all('.product .title').collect(&:text)
       end
     end
-
+  end
+end
+```
 
 ## Contributing to capybara-page-object ##
 
