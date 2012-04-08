@@ -6,10 +6,6 @@ module CapybaraPageObject
       ['ul', 'ol']
     end
 
-    def child_node
-      'li'
-    end
-    
     def items(*args)
       all('li').map { |e| ListItem.new(e) }
     end

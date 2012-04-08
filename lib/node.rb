@@ -25,21 +25,9 @@ module CapybaraPageObject
       new(Capybara.string(string).find(:xpath, '.'))
     end
 
-    def respond_to?(sym)
-      source.respond_to?(sym) || super(sym)
-    end
-
     # TODO why is this needed?
     def text
       root_node.text
-    end
-
-    def method_missing(sym, *args, &block)
-      if source.respond_to?(sym)
-        source.send(sym)
-      else
-        super(sym, *args, &block)
-      end
     end
 
     def classes

@@ -18,13 +18,13 @@ describe "CapybaraPageObject::Table" do
   
   context "#rows" do
     it "return the table's rows" do
-      @table.rows(:keys => 'id').should =~ ['table_1_tr_1', 'table_1_tr_2']
+      @table.rows.keys.should =~ ['table_1_tr_1', 'table_1_tr_2']
     end
   end
 
   context "#headers" do
     it "return the table's headers" do
-      @table.headers.collect(&:text).should =~ ["TH1", "TH2"]
+      @table.headers.keys.should =~ ["table_1_th_1", "table_1_th_2"]
     end
   end
 end

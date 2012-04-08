@@ -5,11 +5,11 @@ module Extractor
     end
 
     def meta_description
-      extract('meta', :by => 'name')['description']['content']
+      find('meta[@name="description"]')['content']
     end
-  
+
     def meta_keywords
-      extract('meta', :by => 'name')['keywords']['content'].split(',').collect(&:strip)
+      find('meta[@name="keywords"]')['content'].split(',').collect(&:strip)
     end
   end
 end
