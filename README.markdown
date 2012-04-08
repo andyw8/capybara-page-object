@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/andyw8/capybara-page-object.png)](http://travis-ci.org/andyw8/capybara-page-object)
+
 # capybara-page-object #
 
 Page Objects for Capybara
@@ -60,6 +62,10 @@ module Pages
   end
 end
 ```
+
+## Demo Project ##
+
+[Depot](https://github.com/andyw8/depot)
 
 ## Contributing to capybara-page-object ##
 
