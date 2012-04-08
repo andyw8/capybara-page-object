@@ -1,7 +1,10 @@
 module CapybaraPageObject
   module Collections
     def key
-      root_node[:id]
+      element_names.each do |element_name|
+        return source.find(element_name)[:id] if source.has_css?(element_name)
+      end
+      return source.native[:id] # TODO this is dodgy?
     end
 
     def value

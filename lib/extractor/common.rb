@@ -1,5 +1,6 @@
 module Extractor
   
+  # TODO get rid of extract
   module Common
     def extract(element, attr={}, page_object_class=nil)
       by = attr[:by]
