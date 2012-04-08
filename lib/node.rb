@@ -2,11 +2,11 @@ require 'collections'
 require 'navigation'
 require 'key_value'
 require 'html5_data'
-require 'extractor/common'
+require 'delegators'
 
 module CapybaraPageObject
   class Node < Capybara::Node::Element
-    include Extractor::Common
+    include Delegators
     include CapybaraPageObject::Collections
     include CapybaraPageObject::Navigation
     include CapybaraPageObject::HTML5Data
@@ -18,13 +18,12 @@ module CapybaraPageObject
       @source = source
     end
 
-    def self.from_string(string)
-      new(Capybara.string(string).find(:xpath, '.'))
-    end
-
-    # TODO why is this needed?
-    def text
-      root_node.text
+    def self.from_string(string, root_element=nil)
+      if root_element
+        new(Capybara.string(string).find(root_element))
+      else
+         new(Capybara.string(string))
+      end
     end
 
     def classes

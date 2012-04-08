@@ -9,11 +9,11 @@ module CapybaraPageObject
     end
 
     def value
-      URI(root_node[:src])
+      URI(source[:src])
     end
 
     def alt
-      root_node[:alt].strip
+      source[:alt].strip
     end
   end
 end
