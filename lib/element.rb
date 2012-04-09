@@ -1,14 +1,25 @@
-require 'element/anchor'
-require 'element/form'
-require 'element/image'
-require 'element/form_field'
-require 'element/head'
-require 'element/input'
-require 'element/list'
-require 'element/list_item'
-require 'element/meta'
-require 'element/select'
-require 'element/table'
-require 'element/table_row'
-require 'element/table_header'
-require 'element/textarea'
+# TODO clean this all up
+require 'html5_data'
+
+module CapybaraPageObject
+  class Element < CapybaraPageObject::Node
+    include CapybaraPageObject::Collections
+    include CapybaraPageObject::HTML5Data
+  end
+end
+
+require 'elements/text_based_input'
+require 'elements/anchor'
+require 'elements/form'
+require 'elements/image'
+require 'elements/form_field'
+require 'elements/head'
+require 'elements/input'
+require 'elements/list'
+require 'elements/list_item'
+require 'elements/meta'
+require 'elements/select'
+require 'elements/table'
+require 'elements/table_row'
+require 'elements/table_header'
+require 'elements/textarea'

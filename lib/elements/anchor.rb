@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Anchor < CapybaraPageObject::Node
+  class Anchor < CapybaraPageObject::Element
     def link
       URI(source[:href])
     end

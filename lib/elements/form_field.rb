@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class FormField < CapybaraPageObject::Node
+  class FormField < CapybaraPageObject::Element
     def key
       source[:name]
     end

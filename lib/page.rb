@@ -1,13 +1,11 @@
 module CapybaraPageObject
   class Page < CapybaraPageObject::Node
+    include CapybaraPageObject::Collections
     
-    def initialize(attr={}, source=nil)
-      super(source)
-      @attr = attr
-      visit
-      self
+    def self.from_string(string, target)
+      new(Capybara.string(string).find(target))
     end
-    
+
     def path(*args)
       raise MissingPath, "You need to override #path in #{self.class}"
     end
@@ -20,13 +18,17 @@ module CapybaraPageObject
       ''
     end
 
-    private
+    def self.visit(attr={}, source=nil)
+      x = new(source)
+      x.visit_path(attr)
+      x
+    end
 
-    def visit
+    def visit_path(attr)
       target = prefix + path
-      if @attr
+      if attr
         pairs = []
-        @attr.each do |k, v|
+        attr.each do |k, v|
           pairs << "#{k}=#{v}"
         end
         target += '?' + pairs.join('&') if pairs.any?

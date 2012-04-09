@@ -1,5 +1,3 @@
-require 'element/text_based_input'
-
 module CapybaraPageObject
   class Input < CapybaraPageObject::FormField  
     include TextBasedInput

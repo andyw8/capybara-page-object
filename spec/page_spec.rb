@@ -5,12 +5,12 @@ class FooPage < CapybaraPageObject::Page
 end
 
 describe "Page" do
-  context "#new" do
-    it "visits the appropriate when initialised" do
+  context "#visit" do
+    it "visits the appropriate path" do
       mock_source = mock()
       mock_source.should_receive(:current_path)
       mock_source.should_receive(:visit).with('/foo')
-      @page = FooPage.new(nil, mock_source)
+      foo_page = FooPage.visit(nil, mock_source)
     end
     
     it "supports key-value pairs" do
@@ -18,13 +18,21 @@ describe "Page" do
       mock_source.should_receive(:current_path)
       mock_source.should_receive(:visit).with('/foo?a=1&b=2')
       # intential mix of string and symbol keys below
-      @page = FooPage.new({'a' => 1, :b => 2}, mock_source)
+      @page = FooPage.visit({'a' => 1, :b => 2}, mock_source)
+    end
+    
+    it "returns an instance of the page object" do
+      mock_source = mock()
+      mock_source.should_receive(:current_path)
+      mock_source.should_receive(:visit).with('/foo')
+      FooPage.visit(nil, mock_source).class.should == FooPage
     end
   
     it "raises an exception if revisiting" do
-      s = stub('Capybara', :current_path => '/foo', :visit => nil)
+      s = stub('Capybara', :current_path => '/foo')
       lambda do
-        @page = FooPage.new(nil, s)
+        page = FooPage.new(s)
+        FooPage.visit(nil, s)
       end.should raise_error(RuntimeError, 'Detected repeat of page load - use #reload instead')
     end
   end

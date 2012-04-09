@@ -1,7 +1,5 @@
-require 'element/text_based_input'
-
 module CapybaraPageObject
-  class Textarea < CapybaraPageObject::Node
+  class Textarea < CapybaraPageObject::Element
     include TextBasedInput
     def blank?
       '' == text

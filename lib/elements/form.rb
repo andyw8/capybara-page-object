@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Form < CapybaraPageObject::Node
+  class Form < CapybaraPageObject::Element
     def fields
       r = {}
       r.merge! inputs

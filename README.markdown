@@ -2,7 +2,7 @@
 
 # capybara-page-object #
 
-Page Objects for Capybara
+[Page Objects](http://code.google.com/p/selenium/wiki/PageObjects) for Capybara
 
 ## Installation ##
 
@@ -45,7 +45,7 @@ Then /^those products should be listed$/ do
 end
 ```
 
-features/support/pages/products/index.rb
+features/pages/products/index.rb
 
 ```ruby
 module Pages
@@ -62,6 +62,39 @@ module Pages
   end
 end
 ```
+
+## Usage ##
+
+Inherit from one of the provided classes:
+
+* CapybaraPageObject::Page to represent the whole page
+* CapybaraPageObject::Component to represent part of a page
+* CapybaraPageObject::Element to represent a single element
+
+### Pages ###
+
+
+### Components ###
+
+If a page has a lot of complexity, or there's content that appears on multiple pages, then it can help to split the page into a number of components.
+
+
+
+## Elements ###
+
+It can sometimes be useful to add methods to a particular element. For example, say you have a span tag:
+```html
+<span id="special_offer" class="highlighted product"></span>
+```
+find('#special_offer')[:class].split(' ').include?('highlighted')
+
+
+
+
+## Best Practices ##
+
+* Avoid CSS or XPath selectors in
+* Avoid assertions in the page models themselves - do this in the step definitions
 
 ## Demo Project ##
 

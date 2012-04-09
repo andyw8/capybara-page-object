@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Table < CapybaraPageObject::Node
+  class Table < CapybaraPageObject::Element
     def rows
       all('tr').each_with_object({}) do |e, hash|
         tr = CapybaraPageObject::TableRow.new(e)

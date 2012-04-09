@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class TableRow < CapybaraPageObject::Node
+  class TableRow < CapybaraPageObject::Element
     def header?
       source.all('th').any?
     end

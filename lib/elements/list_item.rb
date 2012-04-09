@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class ListItem < CapybaraPageObject::Node
+  class ListItem < CapybaraPageObject::Element
     def text
       source.text.strip
     end

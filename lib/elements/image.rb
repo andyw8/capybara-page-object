@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Image < CapybaraPageObject::Node
+  class Image < CapybaraPageObject::Element
     def key
       alt
     end
