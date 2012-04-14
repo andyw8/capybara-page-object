@@ -15,3 +15,4 @@ group :development do
 end
 
 gem "capybara"
+gem "active_support" # for OrderedHash
