@@ -1,4 +1,5 @@
 require 'capybara'
+require 'capybara-page-object/extensions/enumerable'
 
 require 'capybara-page-object/key_value'
 require 'capybara-page-object/delegators'

@@ -15,4 +15,3 @@ group :development do
 end
 
 gem "capybara"
-gem "backports"
