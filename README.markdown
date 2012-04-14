@@ -52,7 +52,7 @@ module Pages
   module Products
     class Index < CapybaraPageObject::Page
       def path
-        '/products'
+        'products'
       end
 
       def product_titles

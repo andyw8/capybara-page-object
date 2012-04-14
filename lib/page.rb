@@ -15,7 +15,7 @@ module CapybaraPageObject
     end
 
     def prefix
-      ''
+      '/'
     end
 
     def self.visit(attr={}, source=nil)
@@ -26,12 +26,16 @@ module CapybaraPageObject
 
     def visit_path(attr)
       target = prefix + path
-      if attr
+      if attr.kind_of?(String)
+        target += attr
+      elsif attr.kind_of?(Hash)
         pairs = []
         attr.each do |k, v|
           pairs << "#{k}=#{v}"
         end
         target += '?' + pairs.join('&') if pairs.any?
+      elsif attr != nil
+        raise ArgumentError
       end
       if target == source.current_path
         raise "Detected repeat of page load - use #reload instead"
