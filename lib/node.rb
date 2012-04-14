@@ -9,7 +9,6 @@ module CapybaraPageObject
     attr_accessor :source
 
     def initialize(source=nil)
-      source ||= Capybara.current_session
       @source = source
     end
 
@@ -20,6 +19,10 @@ module CapybaraPageObject
     def classes
       classes_list = source[:class] or return []
       classes_list.split(' ')
+    end
+
+    def source
+      @source ||= Capybara.current_session
     end
   end
 
