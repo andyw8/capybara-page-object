@@ -50,7 +50,8 @@ features/pages/products/index.rb
 ```ruby
 module Pages
   module Products
-    class Index < CapybaraPageObject::Page
+    class Index
+      include CapybaraPageObject::Page
       def path
         'products'
       end
@@ -65,35 +66,15 @@ end
 
 ## Usage ##
 
-Inherit from one of the provided classes:
+Create a class to present your page, component or element, and include the appropirate module:
 
-* CapybaraPageObject::Page to represent the whole page
-* CapybaraPageObject::Component to represent part of a page
-* CapybaraPageObject::Element to represent a single element
-
-### Pages ###
-
-
-### Components ###
-
-If a page has a lot of complexity, or there's content that appears on multiple pages, then it can help to split the page into a number of components.
-
-
-
-## Elements ###
-
-It can sometimes be useful to add methods to a particular element. For example, say you have a span tag:
-```html
-<span id="special_offer" class="highlighted product"></span>
-```
-find('#special_offer')[:class].split(' ').include?('highlighted')
-
-
-
+* CapybaraPageObject::Page to represent a whole page
+* CapybaraPageObject::Component to represent part of a page (e.g. a sidebar)
+* CapybaraPageObject::Element to represent a single element (e.g. a <footer> tag)
 
 ## Best Practices ##
 
-* Avoid CSS or XPath selectors in
+* Avoid CSS or XPath selectors in your step definitions - do this within the page/component/element objects
 * Avoid assertions in the page models themselves - do this in the step definitions
 
 ## Demo Project ##
