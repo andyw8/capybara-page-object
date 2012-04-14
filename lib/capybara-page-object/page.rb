@@ -43,4 +43,7 @@ module CapybaraPageObject
       source.visit target
     end    
   end
+
+  class MissingPath < RuntimeError
+  end
 end

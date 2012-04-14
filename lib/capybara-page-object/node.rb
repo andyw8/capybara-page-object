@@ -1,5 +1,5 @@
 module CapybaraPageObject
-  class Node < Capybara::Node::Element
+  class Node
     include Delegators
 
     attr_accessor :source
@@ -20,8 +20,5 @@ module CapybaraPageObject
     def source
       @source ||= Capybara.current_session
     end
-  end
-
-  class MissingPath < RuntimeError
   end
 end
