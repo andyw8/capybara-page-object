@@ -1,10 +1,6 @@
-require 'key_value'
-require 'delegators'
-
 module CapybaraPageObject
   class Node < Capybara::Node::Element
     include Delegators
-
 
     attr_accessor :source
 
