@@ -3,6 +3,7 @@ require 'node'
 require 'element'
 require 'html5_data'
 require 'page'
+require 'component'
 
 module Capybara
   module Node
