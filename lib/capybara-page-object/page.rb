@@ -9,19 +9,15 @@ module CapybaraPageObject
     def path(*args)
       raise MissingPath, "You need to override #path in #{self.class}"
     end
-    
-    def refresh
-      visit
-    end
 
     def prefix
       '/'
     end
 
     def self.visit(attr={}, source=nil)
-      x = new(source)
-      x.visit_path(attr)
-      x
+      page = new(source)
+      page.visit_path(attr)
+      page
     end
 
     def visit_path(attr)
@@ -36,9 +32,6 @@ module CapybaraPageObject
         target += '?' + pairs.join('&') if pairs.any?
       elsif attr != nil
         raise ArgumentError
-      end
-      if target == source.current_path
-        raise "Detected repeat of page load - use #reload instead"
       end
       source.visit target
     end    

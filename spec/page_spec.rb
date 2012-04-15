@@ -24,14 +24,12 @@ describe "Page" do
 
     it "visits the appropriate path" do
       mock_source = mock()
-      mock_source.should_receive(:current_path)
       mock_source.should_receive(:visit).with('/foos')
       foo_page = FooIndex.visit(nil, mock_source)
     end
 
     it "supports key-value pairs" do
       mock_source = mock()
-      mock_source.should_receive(:current_path)
       mock_source.should_receive(:visit).with('/foos?a=1&b=2')
       # using an OrderedHash so we can guarantee the order on Ruby 1.8
       # also, the mix of string and symbol keys is intentional
@@ -44,29 +42,19 @@ describe "Page" do
     end
 
     it "supports single resource identifiers" do
-      mock_source = mock()
-      mock_source.should_receive(:current_path)
-      mock_source.should_receive(:visit).with('/foos/bar')
-      @page = FooShow.visit('bar', mock_source)
+      source = stub().as_null_object
+      @page = FooShow.visit('bar', source)
     end
 
     it "returns an instance of the page object" do
-      mock_source = mock()
-      mock_source.should_receive(:current_path)
-      mock_source.should_receive(:visit).with('/foos')
-      FooIndex.visit(nil, mock_source).class.should == FooIndex
+      source = stub().as_null_object
+      FooIndex.visit(nil, source).class.should == FooIndex
     end
 
     it "throws an ArgumentError if the arg type is unrecognized" do
       lambda do
         FooIndex.visit(Object)
       end.should raise_error(ArgumentError)
-    end
-  end
-  
-  context "#refresh" do
-    pending "revisits the page" do
-      # TODO implemented but untested
     end
   end
 end
