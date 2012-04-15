@@ -31,8 +31,7 @@ module CapybaraPageObject
     end
     
     def inputs
-      hash = {}
-      all('input').each do |input_tag|
+      all('input').each_with_object({}) do |input_tag, hash|
         input = Input.new(input_tag)
         next if input.button?
         if input.checkable?
@@ -41,7 +40,6 @@ module CapybaraPageObject
           hash[input.key] = input_tag.value
         end
       end
-      hash
     end
 
     def textareas
