@@ -56,6 +56,12 @@ describe "Page" do
       mock_source.should_receive(:visit).with('/foos')
       FooIndex.visit(nil, mock_source).class.should == FooIndex
     end
+
+    it "throws an ArgumentError if the arg type is unrecognized" do
+      lambda do
+        FooIndex.visit(Object)
+      end.should raise_error(ArgumentError)
+    end
   end
   
   context "#refresh" do
