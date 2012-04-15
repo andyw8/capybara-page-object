@@ -7,10 +7,10 @@ group :development do
   gem "rspec"
   gem 'rake', '~> 0.9.2.2'
   gem "rdoc", '~> 3.12'
+  gem "active_support" # for OrderedHash
 end
 
-group :text do
-  gem "active_support" # for OrderedHash
+group :test do
 end
 
 gem "capybara"
