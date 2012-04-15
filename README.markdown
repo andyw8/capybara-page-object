@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/andyw8/capybara-page-object.png)](http://travis-ci.org/andyw8/capybara-page-object)
+[![Build Status](https://secure.travis-ci.org/andyw8/capybara-page-object.png)](http://travis-ci.org/andyw8/capybara-page-object) [![Dependency Status](https://gemnasium.com/andyw8/capybara-page-object.png)](https://gemnasium.com/andyw8/capybara-page-object)
 
 # capybara-page-object #
 
