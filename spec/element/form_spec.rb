@@ -42,6 +42,13 @@ describe "Form" do
     end
   end
 
+  context "#inputs" do
+    it "returns the inputs on the page (excluding buttons)" do
+      @form.inputs.keys.should == ["input_1", "text_input", "password_input", "checkbox_1",
+        "checkbox_2", "radio_button_1", "radio_button_2"]
+    end
+  end
+
   # context "#fields" do
   #   it "return the fields contained in the form - inputs, selects and textareas. Excludes button type inputs (submit, reset, etc.)" do
   #     f = {
