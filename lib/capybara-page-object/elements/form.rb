@@ -1,7 +1,10 @@
+require 'active_support/ordered_hash'
+
 module CapybaraPageObject
+
   class Form < CapybaraPageObject::Element
     def fields
-      r = {}
+      r = ActiveSupport::OrderedHash.new
       r.merge! inputs
       r.merge! selects
       r.merge! textareas
@@ -21,7 +24,7 @@ module CapybaraPageObject
     end
 
     def inputs
-      all('input').each_with_object({}) do |input_tag, hash|
+      all('input').each_with_object(ActiveSupport::OrderedHash.new) do |input_tag, hash|
         input = Input.new(input_tag)
         next if input.button?
         if input.checkable?
@@ -33,14 +36,14 @@ module CapybaraPageObject
     end
 
     def textareas
-      all('textarea').inject({}) do |result, element|
+      all('textarea').inject(ActiveSupport::OrderedHash.new) do |result, element|
         textarea = Textarea.new(element)
         result.merge textarea.key => textarea.value
       end
     end
 
     def selects
-      all('select').inject({}) do |result, element|
+      all('select').inject(ActiveSupport::OrderedHash.new) do |result, element|
         select = Select.new(element)
         result.merge select.key => select.value
       end
