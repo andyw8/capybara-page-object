@@ -1,28 +1,12 @@
 module CapybaraPageObject
-  class Page < CapybaraPageObject::Node
-    include CapybaraPageObject::Collections
-    
-    def self.from_string(string, target)
-      new(Capybara.string(string).find(target))
-    end
 
+  module InstanceMethods
     def path(*args)
       raise MissingPath, "You need to override #path in #{self.class}"
     end
 
     def prefix
       '/'
-    end
-
-    def self.current?
-      page = new
-      page.source.current_path == page.prefix + page.path
-    end
-
-    def self.visit(attr={}, source=nil)
-      page = new(source)
-      page.visit_path(attr)
-      page
     end
 
     def visit_path(attr)
@@ -40,6 +24,29 @@ module CapybaraPageObject
       end
       source.visit target
     end    
+  end
+
+  module ClassMethods
+    def from_string(string, target)
+      new(Capybara.string(string).find(target))
+    end
+
+    def current?
+      page = new
+      page.source.current_path == page.prefix + page.path
+    end
+
+    def visit(attr={}, source=nil)
+      page = new(source)
+      page.visit_path(attr)
+      page
+    end
+  end
+
+  class Page < CapybaraPageObject::Node
+    include CapybaraPageObject::Collections
+    include CapybaraPageObject::InstanceMethods
+    extend CapybaraPageObject::ClassMethods
   end
 
   class MissingPath < RuntimeError
