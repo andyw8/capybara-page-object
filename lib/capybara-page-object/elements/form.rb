@@ -20,16 +20,6 @@ module CapybaraPageObject
       r
     end
 
-    def respond_to?(sym)
-      fields.has_key?(sym.to_s) || super(sym)
-    end
-
-    def method_missing(sym, *args, &block)
-      p "method_missing: #{sym.to_s}"
-      return fields[sym.to_s] if fields.has_key?(sym.to_s)
-      super(sym, *args, &block)
-    end
-    
     def inputs
       all('input').each_with_object({}) do |input_tag, hash|
         input = Input.new(input_tag)
