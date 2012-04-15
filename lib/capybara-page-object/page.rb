@@ -14,6 +14,11 @@ module CapybaraPageObject
       '/'
     end
 
+    def self.current?
+      page = new
+      page.source.current_path == page.prefix + page.path
+    end
+
     def self.visit(attr={}, source=nil)
       page = new(source)
       page.visit_path(attr)

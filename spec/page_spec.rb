@@ -14,6 +14,18 @@ class FooShow < CapybaraPageObject::Page
 end
 
 describe "Page" do
+  context ".current?" do
+    it "is true if the path matches the current session path" do
+      Capybara.stub(:current_session => mock(:current_path => '/foos'))
+      FooIndex.should be_current
+    end
+
+    it "is false if the path doesn't match the current session path" do
+      Capybara.stub(:current_session => mock(:current_path => '/foos/1'))
+      FooIndex.should_not be_current
+    end
+  end
+
   context "#visit" do
 
     it "throws if path hasn't been overridden" do
