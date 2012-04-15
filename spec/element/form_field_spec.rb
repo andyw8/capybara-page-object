@@ -2,9 +2,15 @@ require 'helper'
 
 describe "FormField" do
   before do
-    @input = CapybaraPageObject::FormField.from_string '<input value="hello">', 'input'
+    @input = CapybaraPageObject::FormField.from_string '<input name="greeting" value="hello">', 'input'
     @textarea = CapybaraPageObject::FormField.from_string '<textarea>foo</textarea>', 'textarea'
     @blank_textarea = CapybaraPageObject::FormField.from_string '<textarea></textarea>', 'textarea'
+  end
+
+  context "#key" do
+    it "returns the name of the form field" do
+      @input.key.should == 'greeting'
+    end
   end
 
   context "#value" do
