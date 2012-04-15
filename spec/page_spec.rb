@@ -1,3 +1,6 @@
+require 'active_support/ordered_hash'
+require 'capybara-page-object'
+
 class FooIndex < CapybaraPageObject::Page
   def path
     'foos'
@@ -23,8 +26,14 @@ describe "Page" do
       mock_source = mock()
       mock_source.should_receive(:current_path)
       mock_source.should_receive(:visit).with('/foos?a=1&b=2')
-      # intential mix of string and symbol keys below
-      @page = FooIndex.visit({'a' => 1, :b => 2}, mock_source)
+      # using an OrderedHash so we can guarantee the order on Ruby 1.8
+      # also, the mix of string and symbol keys is intentional
+      # for some reason, passing in the hash to the initializer fails when
+      # running via Rake
+      key_values = ActiveSupport::OrderedHash.new
+      key_values['a'] = 1
+      key_values[:b] = 2
+      @page = FooIndex.visit(key_values, mock_source)
     end
 
     it "supports single resource identifiers" do
