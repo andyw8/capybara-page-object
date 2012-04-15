@@ -47,13 +47,6 @@ desc "Run specs"
 RSpec::Core::RakeTask.new do |t|
 end
 
-desc "Generate code coverage"
-RSpec::Core::RakeTask.new(:coverage) do |t|
-  t.pattern = "./spec/**/*_spec.rb" # don't need this, it's default.
-  t.rcov = true
-  t.rcov_opts = ['--exclude', 'spec']
-end
-
 task :default => :spec
 
 require 'rdoc/task'
