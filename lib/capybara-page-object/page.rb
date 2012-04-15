@@ -14,10 +14,7 @@ module CapybaraPageObject
       if attr.kind_of?(String)
         target += attr
       elsif attr.kind_of?(Hash)
-        pairs = []
-        attr.each do |k, v|
-          pairs << "#{k}=#{v}"
-        end
+        pairs = attr.map { |k, v| "#{k}=#{v}" }
         target += '?' + pairs.join('&') if pairs.any?
       elsif attr != nil
         raise ArgumentError
