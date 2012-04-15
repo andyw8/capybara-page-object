@@ -15,6 +15,13 @@ end
 
 describe "Page" do
   context "#visit" do
+
+    it "throws if path hasn't been overridden" do
+      lambda do
+        CapybaraPageObject::Page.visit
+      end.should raise_error(CapybaraPageObject::MissingPath, 'You need to override #path in CapybaraPageObject::Page')
+    end
+
     it "visits the appropriate path" do
       mock_source = mock()
       mock_source.should_receive(:current_path)
