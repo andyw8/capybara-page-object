@@ -49,6 +49,18 @@ describe "Form" do
     end
   end
 
+  context "#textareas" do
+    it "returns the textareas on the page" do
+      @form.textareas.keys.should == ["essay"]
+    end
+  end
+
+  context "#selects" do
+    it "returns the selects on the page" do
+      @form.selects.keys.should == ["colour", "countries"]
+    end
+  end
+
   # context "#fields" do
   #   it "return the fields contained in the form - inputs, selects and textareas. Excludes button type inputs (submit, reset, etc.)" do
   #     f = {
