@@ -33,8 +33,8 @@ module CapybaraPageObject
       page.source.current_path == page.prefix + page.path
     end
 
-    def visit(attr={}, source=nil)
-      page = new(source)
+    def visit(attr={})
+      page = new
       page.visit_path(attr)
       page
     end
