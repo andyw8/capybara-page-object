@@ -66,7 +66,7 @@ end
 
 ## Usage ##
 
-Create a class to present your page, component or element, and include the appropirate module:
+Create a class to represent a page, component or element, and include the appropriate module:
 
 * CapybaraPageObject::Page to represent a whole page
 * CapybaraPageObject::Component to represent part of a page (e.g. a sidebar)
