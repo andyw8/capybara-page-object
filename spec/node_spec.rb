@@ -18,5 +18,14 @@ describe "Page" do
       anchor = CapybaraPageObject::Anchor.from_string '<a/>', 'a'
       anchor.classes.should be_empty
     end
+
+    it "has a nice DSL" do
+      source = mock
+      source.should_receive(:find_button).with('place_order')
+      class Bar < CapybaraPageObject::Node
+        element(:place_order) { source.find_button('place_order') }
+      end
+      Bar.new(source).place_order
+    end
   end
 end

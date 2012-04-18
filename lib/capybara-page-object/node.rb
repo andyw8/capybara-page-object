@@ -20,5 +20,9 @@ module CapybaraPageObject
     def source
       @source ||= Capybara.current_session
     end
+
+    def self.element(name, &block)
+      define_method(name, &block)
+    end
   end
 end
