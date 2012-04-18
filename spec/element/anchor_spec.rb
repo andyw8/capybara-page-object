@@ -7,9 +7,14 @@ describe "Anchor" do
   end
 
   context "#link" do
-    it "return a URI object" do
-      @anchor.link.class.should == URI::Generic
-      @anchor.link.path.should == 'hello.html'
+    it "return the link" do
+      @anchor.link.should == 'hello.html'
+    end
+  end
+
+  context "#uri" do
+    it "return the link as a URI" do
+      @anchor.uri.should == URI('hello.html')
     end
   end
 end
