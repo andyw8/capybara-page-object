@@ -9,14 +9,14 @@ describe "Page" do
   context "#tables" do
     it "returns a hash of Tables keyed by ID" do
       tables = @page.tables
-      tables.keys.should == ['table_1', 'table_2']
+      tables.keys.should =~ ['table_1', 'table_2']
       tables['table_1'].class.should == CapybaraPageObject::Table
     end
   end
 
   context "#forms" do
     it "returns a hash of Forms keyed by ID" do
-      @page.forms.keys.should == ['form_1', 'form_2']
+      @page.forms.keys.should =~ ['form_1', 'form_2']
       @page.forms['form_1'].class.should == CapybaraPageObject::Form
     end
   end
