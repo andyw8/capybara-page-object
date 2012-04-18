@@ -7,7 +7,7 @@ describe "Page" do
   end
 
   context "#tables" do
-    pending "returns a hash of Tables keyed by ID" do
+    it "returns a hash of Tables keyed by ID" do
       tables = @page.tables
       tables.keys.should == ['table_1', 'table_2']
       tables['table_1'].class.should == CapybaraPageObject::Table
@@ -15,8 +15,8 @@ describe "Page" do
   end
 
   context "#forms" do
-    pending "returns a hash of Forms keyed by ID" do
-      @page.forms.should == ['form_1', 'form_2']
+    it "returns a hash of Forms keyed by ID" do
+      @page.forms.keys.should == ['form_1', 'form_2']
       @page.forms['form_1'].class.should == CapybaraPageObject::Form
     end
   end

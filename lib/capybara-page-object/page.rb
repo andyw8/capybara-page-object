@@ -41,6 +41,21 @@ module CapybaraPageObject
   end
 
   class Page < CapybaraPageObject::Node
+    # TODO why doesn't this work when in the module?
+    def tables
+      all('table').each_with_object({}) do |e, hash|
+        t = CapybaraPageObject::Table.new(e)
+        hash[t.key] = t
+      end
+    end
+
+    def forms
+      all('form').each_with_object({}) do |e, hash|
+        f = CapybaraPageObject::Form.new(e)
+        hash[f.key] = f
+      end
+    end
+
     include CapybaraPageObject::Collections
     include CapybaraPageObject::InstanceMethods
     extend CapybaraPageObject::ClassMethods
