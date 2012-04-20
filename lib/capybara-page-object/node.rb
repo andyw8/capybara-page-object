@@ -1,3 +1,6 @@
+require 'capybara-page-object/delegators'
+
+
 module CapybaraPageObject
   class Node
     include Delegators
@@ -22,6 +25,10 @@ module CapybaraPageObject
     end
 
     def self.element(name, &block)
+      define_method(name, &block)
+    end
+
+    def self.field(name, &block)
       define_method(name, &block)
     end
   end

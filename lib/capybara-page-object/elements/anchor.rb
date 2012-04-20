@@ -1,11 +1,6 @@
 module CapybaraPageObject
   class Anchor < CapybaraPageObject::Element
-    def link
-      source[:href]
-    end
-
-    def uri
-      URI link
-    end
+    field(:link) { source[:href] }
+    field(:uri) { URI link }
   end
 end

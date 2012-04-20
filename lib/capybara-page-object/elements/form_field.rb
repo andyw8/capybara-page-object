@@ -1,12 +1,7 @@
 module CapybaraPageObject
   class FormField < CapybaraPageObject::Element
-    def key
-      source[:name]
-    end
-
-    def value
-      source.value
-    end
+    field(:key) { source[:name] }
+    field(:value) { source.value }
 
     def blank?
       value.nil? || '' == value

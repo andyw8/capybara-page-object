@@ -30,10 +30,7 @@ features/step_definitions/product_steps.rb
 
 ```ruby
 Given /^the products:$/ do |table|
-  @products = []
-  table.raw.flatten.each do |p|
-    @products << Product.create!(:title => p)
-  end
+  @products = table.raw.flatten.map { |p| Product.create!(:title => p) }
 end
 
 When /^I visit the store$/ do
@@ -41,7 +38,7 @@ When /^I visit the store$/ do
 end
 
 Then /^those products should be listed$/ do
-  @page.product_titles.should == @products.collect{ |p| p.title }
+  @page.product_titles.should == @products.map{ |p| p.title }
 end
 ```
 
@@ -52,9 +49,8 @@ module Pages
   module Products
     class Index
       include CapybaraPageObject::Page
-      def path
-        'products'
-      end
+      
+      path 'products'
 
       def product_titles
         all('.products .title').collect(&:text)

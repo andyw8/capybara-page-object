@@ -1,15 +1,7 @@
 module CapybaraPageObject
   class Image < CapybaraPageObject::Element
-    def key
-      alt
-    end
-
-    def value
-      URI(source[:src])
-    end
-
-    def alt
-      source[:alt].strip
-    end
+    field(:key) { alt }
+    field(:value) { URI(source[:src]) }
+    field(:alt){ source[:alt].strip }
   end
 end

@@ -1,5 +1,5 @@
 require 'active_support/ordered_hash'
-require 'capybara-page-object'
+require File.dirname(__FILE__) + '../../lib/capybara-page-object/page'
 
 describe "a class which extends CapybaraPageObject::Page" do
 
@@ -72,6 +72,16 @@ describe "a class which extends CapybaraPageObject::Page" do
       lambda do
         FooIndex.visit Object
       end.should raise_error ArgumentError
+    end
+
+    it "supports some dsl syntax" do
+      class Blah < CapybaraPageObject::Page
+        path 'xyz'
+      end
+      session = mock()
+      session.should_receive(:visit).with('/xyz')
+      Capybara.stub :current_session => session
+      @page = Blah.visit
     end
   end
 end

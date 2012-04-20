@@ -1,3 +1,6 @@
+require 'capybara-page-object/node'
+require 'capybara-page-object/collections'
+
 module CapybaraPageObject
 
   module InstanceMethods
@@ -54,6 +57,10 @@ module CapybaraPageObject
         f = CapybaraPageObject::Form.new(e)
         hash[f.key] = f
       end
+    end
+
+    def self.path(p)
+      define_method(:path) { p }
     end
 
     include CapybaraPageObject::Collections
