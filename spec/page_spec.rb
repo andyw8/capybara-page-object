@@ -1,5 +1,5 @@
 require 'active_support/ordered_hash'
-require File.dirname(__FILE__) + '../../lib/capybara-page-object/page'
+require File.dirname(__FILE__) + '/../lib/capybara-page-object/page'
 
 describe "a class which extends CapybaraPageObject::Page" do
 
