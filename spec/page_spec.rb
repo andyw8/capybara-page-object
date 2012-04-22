@@ -74,7 +74,7 @@ describe "a class which extends CapybaraPageObject::Page" do
       end.should raise_error ArgumentError
     end
 
-    it "supports some dsl syntax" do
+    it "has a DSL for setting the path" do
       class Blah < CapybaraPageObject::Page
         path 'xyz'
       end
@@ -82,6 +82,16 @@ describe "a class which extends CapybaraPageObject::Page" do
       session.should_receive(:visit).with('/xyz')
       Capybara.stub :current_session => session
       @page = Blah.visit
+    end
+
+    it "has a DSL for setting components" do
+      class Blah < CapybaraPageObject::Page
+        component(:navigation) { source.find('#navigation') }
+      end
+      session = mock
+      session.should_receive(:find).with('#navigation')
+      Capybara.stub :current_session => session
+      Blah.new.navigation
     end
   end
 end

@@ -47,14 +47,24 @@ features/pages/products/index.rb
 ```ruby
 module Pages
   module Products
-    class Index
-      include CapybaraPageObject::Page
+    class Index < CapybaraPageObject::Page
       
       path 'products'
 
+      component :navigation { Components::Navigation.new find('#nav') }
+      component :product_list { Components::ProductList.new find('#products') }
+
       def product_titles
-        all('.products .title').collect(&:text)
+        product_list.titles
       end
+    end
+  end
+end
+
+module Compnents
+  class ProductList < CapybaraPageObject::Component
+    def titles
+      source.all('.title').collect(&:text)
     end
   end
 end

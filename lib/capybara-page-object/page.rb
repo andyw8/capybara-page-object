@@ -63,6 +63,10 @@ module CapybaraPageObject
       define_method(:path) { p }
     end
 
+    def self.component(name, &block)
+      define_method(name, &block)
+    end
+
     include CapybaraPageObject::Collections
     include CapybaraPageObject::InstanceMethods
     extend CapybaraPageObject::ClassMethods
