@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{capybara-page-object}
-  s.version = "0.5.0"
+  s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Andy Waite}]
-  s.date = %q{2012-04-08}
+  s.date = %q{2012-04-22}
   s.description = %q{Page Objects for Capybara}
   s.email = %q{andy@andywaite.com}
   s.extra_rdoc_files = [
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -26,29 +27,32 @@ Gem::Specification.new do |s|
     "VERSION",
     "capybara-page-object.gemspec",
     "lib/capybara-page-object.rb",
-    "lib/collections.rb",
-    "lib/delegators.rb",
-    "lib/element.rb",
-    "lib/element/TODO.md",
-    "lib/element/anchor.rb",
-    "lib/element/form.rb",
-    "lib/element/form_field.rb",
-    "lib/element/head.rb",
-    "lib/element/image.rb",
-    "lib/element/input.rb",
-    "lib/element/list.rb",
-    "lib/element/list_item.rb",
-    "lib/element/meta.rb",
-    "lib/element/select.rb",
-    "lib/element/table.rb",
-    "lib/element/table_header.rb",
-    "lib/element/table_row.rb",
-    "lib/element/text_based_input.rb",
-    "lib/element/textarea.rb",
-    "lib/html5_data.rb",
-    "lib/key_value.rb",
-    "lib/node.rb",
-    "lib/page.rb",
+    "lib/capybara-page-object/collections.rb",
+    "lib/capybara-page-object/component.rb",
+    "lib/capybara-page-object/delegators.rb",
+    "lib/capybara-page-object/element.rb",
+    "lib/capybara-page-object/elements.rb",
+    "lib/capybara-page-object/elements/anchor.rb",
+    "lib/capybara-page-object/elements/form.rb",
+    "lib/capybara-page-object/elements/form_field.rb",
+    "lib/capybara-page-object/elements/head.rb",
+    "lib/capybara-page-object/elements/image.rb",
+    "lib/capybara-page-object/elements/input.rb",
+    "lib/capybara-page-object/elements/list.rb",
+    "lib/capybara-page-object/elements/list_item.rb",
+    "lib/capybara-page-object/elements/meta.rb",
+    "lib/capybara-page-object/elements/select.rb",
+    "lib/capybara-page-object/elements/table.rb",
+    "lib/capybara-page-object/elements/table_header.rb",
+    "lib/capybara-page-object/elements/table_row.rb",
+    "lib/capybara-page-object/elements/text_based_input.rb",
+    "lib/capybara-page-object/elements/textarea.rb",
+    "lib/capybara-page-object/extensions/capybara.rb",
+    "lib/capybara-page-object/extensions/enumerable.rb",
+    "lib/capybara-page-object/html5_data.rb",
+    "lib/capybara-page-object/key_value.rb",
+    "lib/capybara-page-object/node.rb",
+    "lib/capybara-page-object/page.rb",
     "spec/common_spec.rb",
     "spec/element/anchor_spec.rb",
     "spec/element/base_spec.rb",
@@ -79,27 +83,30 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<activesupport>, ["~> 3.0"])
       s.add_runtime_dependency(%q<capybara>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<rake>, ["~> 0.9.2.2"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
     else
+      s.add_dependency(%q<activesupport>, ["~> 3.0"])
       s.add_dependency(%q<capybara>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
     end
   else
+    s.add_dependency(%q<activesupport>, ["~> 3.0"])
     s.add_dependency(%q<capybara>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
