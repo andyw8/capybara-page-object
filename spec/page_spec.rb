@@ -6,11 +6,6 @@ describe "a class which extends CapybaraPageObject::Page" do
   before do
     class FooShow < CapybaraPageObject::Page
       def path
-        'foos/'
-      end
-    end
-    class FooIndex < CapybaraPageObject::Page
-      def path
         'foos'
       end
     end
@@ -19,12 +14,12 @@ describe "a class which extends CapybaraPageObject::Page" do
   context ".current?" do
     it "is true if the path matches the current session path" do
       Capybara.stub :current_session => mock(:current_path => '/foos')
-      FooIndex.should be_current
+      FooShow.should be_current
     end
 
     it "is false if the path doesn't match the current session path" do
       Capybara.stub :current_session => mock(:current_path => '/foos/1')
-      FooIndex.should_not be_current
+      FooShow.should_not be_current
     end
   end
 
@@ -33,7 +28,7 @@ describe "a class which extends CapybaraPageObject::Page" do
       session = mock
       session.should_receive(:visit).with('/foos')
       Capybara.stub :current_session => session
-      FooIndex.visit
+      FooShow.visit
     end
 
     it "throws an error if path hasn't been overridden" do
@@ -53,7 +48,7 @@ describe "a class which extends CapybaraPageObject::Page" do
       key_values = ActiveSupport::OrderedHash.new
       key_values['a'] = 1
       key_values[:b] = 2
-      @page = FooIndex.visit key_values
+      @page = FooShow.visit key_values
     end
 
     it "converts a supplied string into a resource identifier" do
@@ -72,12 +67,12 @@ describe "a class which extends CapybaraPageObject::Page" do
 
     it "returns an instance of the page object" do
       Capybara.stub :current_session => stub.as_null_object
-      FooIndex.visit.class.should == FooIndex
+      FooShow.visit.class.should == FooShow
     end
 
     it "throws an error if the supplied argument is something other a string or hash" do
       lambda do
-        FooIndex.visit Object
+        FooShow.visit Object
       end.should raise_error ArgumentError
     end
 

@@ -15,9 +15,9 @@ module CapybaraPageObject
     def visit_path(attr)
       target = prefix + path
       if attr.kind_of?(String)
-        target += attr
+        target += '/' + attr
       elsif attr.kind_of?(Integer)
-        target += attr.to_s
+        target += '/' + attr.to_s
       elsif attr.kind_of?(Hash)
         pairs = attr.map { |k, v| "#{k}=#{v}" }
         target += '?' + pairs.join('&') if pairs.any?
@@ -38,7 +38,7 @@ module CapybaraPageObject
       page.source.current_path == page.prefix + page.path
     end
 
-    def visit(attr={})
+    def visit(attr=nil)
       page = new
       page.visit_path(attr)
       page
