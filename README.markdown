@@ -61,7 +61,7 @@ module Pages
   end
 end
 
-module Compnents
+module Components
   class ProductList < CapybaraPageObject::Component
     def titles
       source.all('.title').collect(&:text)
