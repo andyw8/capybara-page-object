@@ -16,11 +16,13 @@ module CapybaraPageObject
       target = prefix + path
       if attr.kind_of?(String)
         target += attr
+      elsif attr.kind_of?(Integer)
+        target += attr.to_s
       elsif attr.kind_of?(Hash)
         pairs = attr.map { |k, v| "#{k}=#{v}" }
         target += '?' + pairs.join('&') if pairs.any?
       elsif attr != nil
-        raise ArgumentError
+        raise ArgumentError, 'Expected a String, Integer or Hash'
       end
       source.visit target
     end    

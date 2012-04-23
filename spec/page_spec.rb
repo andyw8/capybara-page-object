@@ -63,6 +63,13 @@ describe "a class which extends CapybaraPageObject::Page" do
       @page = FooShow.visit 'bar'
     end
 
+    it "converts a supplied integer into a resource identifier" do
+      session = mock()
+      session.should_receive(:visit).with('/foos/1')
+      Capybara.stub :current_session => session
+      @page = FooShow.visit(1)
+    end
+
     it "returns an instance of the page object" do
       Capybara.stub :current_session => stub.as_null_object
       FooIndex.visit.class.should == FooIndex
