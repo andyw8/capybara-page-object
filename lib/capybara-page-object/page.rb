@@ -8,12 +8,12 @@ module CapybaraPageObject
       raise MissingPath, "You need to override #path in #{self.class}"
     end
 
-    def prefix
+    def root_path
       '/'
     end
 
     def visit_path(attr)
-      target = prefix + path
+      target = root_path + path
       if attr.kind_of?(String)
         target += '/' + attr
       elsif attr.kind_of?(Integer)
@@ -35,7 +35,7 @@ module CapybaraPageObject
 
     def current?
       page = new
-      page.source.current_path == page.prefix + page.path
+      page.source.current_path == page.root_path + page.path
     end
 
     def visit(attr=nil)
