@@ -12,5 +12,5 @@ end
 group :test do
 end
 
-gem "activesupport", '~> 3.0' # for OrderedHash
+gem "activesupport", "> 2.1.0" # for OrderedHash
 gem "capybara"
