@@ -58,7 +58,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 3.0)
+  activesupport (> 2.1.0)
   bundler (~> 1.1.0)
   capybara
   jeweler (~> 1.8.3)
