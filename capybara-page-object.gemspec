@@ -112,3 +112,4 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
   end
 end
+
