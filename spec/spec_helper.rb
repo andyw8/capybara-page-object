@@ -11,6 +11,8 @@ require 'spork'
 
 Spork.prefork do
 
+  $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+
   # ----- code coverage
 
   if ENV["COVERAGE"] and not ENV['DRB']
