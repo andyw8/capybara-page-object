@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 require 'active_support/ordered_hash'
-require File.dirname(__FILE__) + '/../lib/capybara-page-object/page'
 
 describe "a class which extends CapybaraPageObject::Page" do
 
@@ -98,4 +97,14 @@ describe "a class which extends CapybaraPageObject::Page" do
       Blah.new.navigation
     end
   end
+
+
+  describe "#full_path" do
+
+    it "concatenates the root path with the given path" do
+      FooShow.new.full_path.should eq('/foos')
+    end
+
+  end
+
 end

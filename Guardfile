@@ -28,9 +28,9 @@ guard 'rspec',
       :cli => '--colour --drb --format documentation --tag focused' do
 
   # ----- lib directory
-  watch(%r{^lib/(.+)\.rb$})           { |m| %W(spec/#{m[1]}_spec.rb) }
+  watch(%r{^lib/(.+)\.rb$}) { |m| %W(spec/#{m[1]}_spec.rb) }
 
   # ----- spec directory
   watch(%r{^spec/.+_spec\.rb$})
-  watch(%r{^spec/support/(.+)\.rb$})  { %W(spec) }
+  watch(%r{^spec/support/(.+)\.rb$}) { %W(spec) }
 end
