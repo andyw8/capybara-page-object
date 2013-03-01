@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # TODO where should this file be?
 module CapybaraPageObject
   module TextBasedInput

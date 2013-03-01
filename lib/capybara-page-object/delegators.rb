@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Delegators
   # TODO why doesn't method_missing work?
   def all(*args)

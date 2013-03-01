@@ -1,4 +1,5 @@
-require 'helper'
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 
 describe "Base" do
   before do

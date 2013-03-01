@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'capybara-page-object/node'
 require 'capybara-page-object/collections'
 
@@ -25,7 +26,7 @@ module CapybaraPageObject
         raise ArgumentError, 'Expected a String, Integer or Hash'
       end
       source.visit target
-    end    
+    end
   end
 
   module ClassMethods

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # need to add each_with_object for Ruby 1.8.7
 module Enumerable
   def each_with_object(memo)

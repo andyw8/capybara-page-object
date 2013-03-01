@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CapybaraPageObject
   class Head < CapybaraPageObject::Element
     field(:title) { find('title').text }
