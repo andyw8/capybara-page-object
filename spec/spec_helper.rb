@@ -29,6 +29,7 @@ Spork.prefork do
   # ----- requirements
 
   require 'rspec'
+  require 'capybara-page-object'
 
 
   # ----- RSpec configuration

@@ -98,13 +98,4 @@ describe "a class which extends CapybaraPageObject::Page" do
     end
   end
 
-
-  describe "#full_path" do
-
-    it "concatenates the root path with the given path" do
-      FooShow.new.full_path.should eq('/foos')
-    end
-
-  end
-
 end
