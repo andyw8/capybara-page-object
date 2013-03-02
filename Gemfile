@@ -29,6 +29,7 @@ group :development do
   gem 'guard-rspec',    '~> 2.4.0'
   gem 'guard-spork',    '~> 1.5.0'
   gem 'jeweler',        '~> 1.8.3'
+  gem 'magic_encoding', '~> 0.0.0'
   gem 'rake',           '~> 10.0.0'
   gem 'rdoc',           '~> 3.12.0'
   gem 'rspec',          '~> 2.13.0'

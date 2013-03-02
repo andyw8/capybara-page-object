@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'capybara'
 require 'capybara-page-object/extensions/enumerable'
 require 'active_support/ordered_hash'

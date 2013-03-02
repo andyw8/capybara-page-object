@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CapybaraPageObject
   class TableRow < CapybaraPageObject::Element
     def header?

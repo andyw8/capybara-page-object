@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'capybara-page-object/node'
 require 'capybara-page-object/collections'
 

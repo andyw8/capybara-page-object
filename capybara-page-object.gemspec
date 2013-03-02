@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andy Waite"]
-  s.date = "2012-11-17"
+  s.date = "2013-03-02"
   s.description = "Page Objects for Capybara"
   s.email = "andy@andywaite.com"
   s.extra_rdoc_files = [
@@ -18,9 +18,11 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".rspec",
     ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
+    "Guardfile",
     "LICENSE.txt",
     "README.markdown",
     "Rakefile",
@@ -53,25 +55,25 @@ Gem::Specification.new do |s|
     "lib/capybara-page-object/key_value.rb",
     "lib/capybara-page-object/node.rb",
     "lib/capybara-page-object/page.rb",
-    "spec/common_spec.rb",
-    "spec/element/anchor_spec.rb",
-    "spec/element/base_spec.rb",
-    "spec/element/form_field_spec.rb",
-    "spec/element/form_spec.rb",
-    "spec/element/head_spec.rb",
-    "spec/element/image_spec.rb",
-    "spec/element/input_spec.rb",
-    "spec/element/list_item_spec.rb",
-    "spec/element/list_spec.rb",
-    "spec/element/meta_spec.rb",
-    "spec/element/select_spec.rb",
-    "spec/element/table_row_spec.rb",
-    "spec/element/table_spec.rb",
-    "spec/element/textarea_spec.rb",
-    "spec/fixtures/node.html",
-    "spec/spec_helper.rb",
-    "spec/node_spec.rb",
-    "spec/page_spec.rb"
+    "spec/capybara-page-object/common_spec.rb",
+    "spec/capybara-page-object/element/anchor_spec.rb",
+    "spec/capybara-page-object/element/base_spec.rb",
+    "spec/capybara-page-object/element/form_field_spec.rb",
+    "spec/capybara-page-object/element/form_spec.rb",
+    "spec/capybara-page-object/element/head_spec.rb",
+    "spec/capybara-page-object/element/image_spec.rb",
+    "spec/capybara-page-object/element/input_spec.rb",
+    "spec/capybara-page-object/element/list_item_spec.rb",
+    "spec/capybara-page-object/element/list_spec.rb",
+    "spec/capybara-page-object/element/meta_spec.rb",
+    "spec/capybara-page-object/element/select_spec.rb",
+    "spec/capybara-page-object/element/table_row_spec.rb",
+    "spec/capybara-page-object/element/table_spec.rb",
+    "spec/capybara-page-object/element/textarea_spec.rb",
+    "spec/capybara-page-object/fixtures/node.html",
+    "spec/capybara-page-object/node_spec.rb",
+    "spec/capybara-page-object/page_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/andyw8/capybara-page-object"
   s.licenses = ["MIT"]
@@ -85,31 +87,52 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<activesupport>, ["> 2.1.0"])
       s.add_runtime_dependency(%q<capybara>, [">= 0"])
+      s.add_development_dependency(%q<libnotify>, ["~> 0.8.0"])
+      s.add_development_dependency(%q<rb-inotify>, ["~> 0.9.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_development_dependency(%q<guard>, ["~> 1.6.0"])
+      s.add_development_dependency(%q<guard-rspec>, ["~> 2.4.0"])
+      s.add_development_dependency(%q<guard-spork>, ["~> 1.5.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
-      s.add_development_dependency(%q<simplecov>, ["~> 0.6.2"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<rake>, ["~> 0.9.2.2"])
-      s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
+      s.add_development_dependency(%q<magic_encoding>, ["~> 0.0.0"])
+      s.add_development_dependency(%q<rake>, ["~> 10.0.0"])
+      s.add_development_dependency(%q<rdoc>, ["~> 3.12.0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.13.0"])
+      s.add_development_dependency(%q<simplecov>, ["~> 0.7.0"])
+      s.add_development_dependency(%q<spork>, ["> 1.0.0.rc"])
     else
       s.add_dependency(%q<activesupport>, ["> 2.1.0"])
       s.add_dependency(%q<capybara>, [">= 0"])
+      s.add_dependency(%q<libnotify>, ["~> 0.8.0"])
+      s.add_dependency(%q<rb-inotify>, ["~> 0.9.0"])
       s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_dependency(%q<guard>, ["~> 1.6.0"])
+      s.add_dependency(%q<guard-rspec>, ["~> 2.4.0"])
+      s.add_dependency(%q<guard-spork>, ["~> 1.5.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
-      s.add_dependency(%q<simplecov>, ["~> 0.6.2"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
-      s.add_dependency(%q<rdoc>, ["~> 3.12"])
+      s.add_dependency(%q<magic_encoding>, ["~> 0.0.0"])
+      s.add_dependency(%q<rake>, ["~> 10.0.0"])
+      s.add_dependency(%q<rdoc>, ["~> 3.12.0"])
+      s.add_dependency(%q<rspec>, ["~> 2.13.0"])
+      s.add_dependency(%q<simplecov>, ["~> 0.7.0"])
+      s.add_dependency(%q<spork>, ["> 1.0.0.rc"])
     end
   else
     s.add_dependency(%q<activesupport>, ["> 2.1.0"])
     s.add_dependency(%q<capybara>, [">= 0"])
+    s.add_dependency(%q<libnotify>, ["~> 0.8.0"])
+    s.add_dependency(%q<rb-inotify>, ["~> 0.9.0"])
     s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+    s.add_dependency(%q<guard>, ["~> 1.6.0"])
+    s.add_dependency(%q<guard-rspec>, ["~> 2.4.0"])
+    s.add_dependency(%q<guard-spork>, ["~> 1.5.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
-    s.add_dependency(%q<simplecov>, ["~> 0.6.2"])
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
-    s.add_dependency(%q<rdoc>, ["~> 3.12"])
+    s.add_dependency(%q<magic_encoding>, ["~> 0.0.0"])
+    s.add_dependency(%q<rake>, ["~> 10.0.0"])
+    s.add_dependency(%q<rdoc>, ["~> 3.12.0"])
+    s.add_dependency(%q<rspec>, ["~> 2.13.0"])
+    s.add_dependency(%q<simplecov>, ["~> 0.7.0"])
+    s.add_dependency(%q<spork>, ["> 1.0.0.rc"])
   end
 end
 
