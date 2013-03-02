@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe "CapybaraPageObject::Table" do
   before do
@@ -42,19 +42,19 @@ describe "CapybaraPageObject::Table" do
       @table.headers.keys.should =~ ["table_1_th_1", "table_1_th_2"]
     end
   end
-  
+
   context "#rows" do
     context "for a table with a header row" do
       it "returns all the table rows except header row" do
         @table.should have(1).rows
       end
     end
-    
+
     context "for a table without a header row" do
       it "returns all the table rows" do
         @table_without_headers.should have(2).rows
       end
     end
   end
-  
+
 end

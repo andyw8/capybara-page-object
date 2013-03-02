@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe "Input" do
   context "#key" do
@@ -56,7 +56,7 @@ describe "Input" do
       input = CapybaraPageObject::Input.from_string '<input type="text">', 'input'
       input.should_not be_untyped
     end
-    
+
     it "is true if the input has no type attribute" do
       input = CapybaraPageObject::Input.from_string '<input>', 'input'
       input.should be_untyped
