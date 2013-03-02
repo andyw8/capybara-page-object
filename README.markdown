@@ -48,7 +48,7 @@ features/pages/products/index.rb
 module Pages
   module Products
     class Index < CapybaraPageObject::Page
-      
+
       path 'products'
 
       component :navigation { Components::Navigation.new find('#nav') }
@@ -74,9 +74,94 @@ end
 
 Create a class to represent a page, component or element, and include the appropriate module:
 
-* CapybaraPageObject::Page to represent a whole page
-* CapybaraPageObject::Component to represent part of a page (e.g. a sidebar)
-* CapybaraPageObject::Element to represent a single element (e.g. a <footer> tag)
+### CapybaraPageObject::Page ###
+
+CapybaraPageObject::Page represents a whole page.
+You must define the path by:
+
+* either using the `Page.path` class method
+
+```ruby
+module Pages::Products
+  class Index < CapybaraPageObject::Page
+    path 'products'
+  end
+end
+```
+
+* or by directly overriding the `path` instance method
+
+```ruby
+module Pages::Products
+  class Index < CapybaraPageObject::Page
+    def path
+      'products'
+    end
+  end
+end
+```
+
+Then to visit the page, just call:
+
+* either the `visit_path` instance method ;
+* or the `visit` class method ;
+
+There is several variants of the visit method:
+
+* without parameter (#1);
+* with a string parameter which will be appended at the end (#2);
+* with an integer parameter which will be appended at the end (#3);
+* with a hash parameter:
+    * if the path has no segment, the key/value pairs will be appended as query strings (#4);
+    * if the path has a segment, the hash must at least contains all the segment IDs, which will be interpolated. The other keys will be appended as query strings (#5);
+    * if the path has at least a segment, the hash must at least contains the segment IDs, which will be interpolated ; other keys will be appended as query strings ;
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>path method</th>
+        <th>method parameters</th>
+        <th>resulting path</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>products</td>
+        <td>[none]</td>
+        <td>/products</td>
+    </tr
+    <tr>
+        <td>2</td>
+        <td>products</td>
+        <td>'some_string'</td>
+        <td>/products/some_string</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>products</td>
+        <td>1</td>
+        <td>/products/1</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>products</td>
+        <td>{ 'k1'=>'v1', 'k2'=>'v2' }</td>
+        <td>/products?k1=v1&k2=v2</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>products/:id1/parts/:id2</td>
+        <td>{ :id1=>'v1', :id2=>'v2', 'k3'=>'v3' }</td>
+        <td>/products/v1/parts/v2?k3=v3</td>
+    </tr>
+</table>
+
+### CapybaraPageObject::Component ###
+
+CapybaraPageObject::Component represents a part of a page (e.g. a sidebar).
+
+### CapybaraPageObject::Element ###
+
+CapybaraPageObject::Element represents a single element (e.g. a <footer> tag).
 
 ## Best Practices ##
 
