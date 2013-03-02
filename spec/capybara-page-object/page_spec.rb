@@ -128,34 +128,55 @@ describe "a class which extends CapybaraPageObject::Page" do
 
     context "when the supplied hash of symbol/value pairs exactly match all path segments" do
       let(:expected_path) { '/some/v1/segmented/v2/path' }
-      let(:parameters) { ActiveSupport::OrderedHash[:p1 => 'v1', :p2 => 'v2'] }
-      it "interpolates all path segments" do; end
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1', :p2 => 'v2']) }
+      it "interpolates all path segments" do
+        ;
+      end
     end
 
     context "when the supplied hash of symbol/value pairs does not exactly match all path segments" do
       let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1&p3=v3' }
-      let(:parameters) { ActiveSupport::OrderedHash[:p1 => 'v1', :p3 => 'v3'] }
-      it "appends query parameters" do; end
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1', :p3 => 'v3']) }
+      it "appends query parameters" do
+        ;
+      end
     end
 
     context "when the supplied hash has less symbol/value pairs than path segments" do
       let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1' }
-      let(:parameters) { ActiveSupport::OrderedHash[:p1 => 'v1'] }
-      it "appends query parameters" do; end
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1']) }
+      it "appends query parameters" do
+        ;
+      end
     end
 
     context "when the supplied hash has more symbol/value pairs than path segments" do
       let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1&p2=v2&p3=v3' }
-      let(:parameters) { ActiveSupport::OrderedHash[:p1 => 'v1', :p2 => 'v2', :p3 => 'v3'] }
-      it "appends query parameters" do; end
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1', :p2 => 'v2', :p3 => 'v3']) }
+      it "appends query parameters" do
+        ;
+      end
     end
 
     context "when the supplied hash has a key which is not a symbol" do
       let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1&p2=v2' }
-      let(:parameters) { ActiveSupport::OrderedHash['p1' => 'v1', :p2 => 'v2'] }
-      it "appends query parameters" do; end
+      let(:parameters) { to_ordered_hash(Hash['p1' => 'v1', :p2 => 'v2']) }
+      it "appends query parameters" do
+        ;
+      end
     end
 
+  end
+
+
+  # ------------------------------
+
+  def to_ordered_hash(hash)
+    ActiveSupport::OrderedHash.new.tap do |ordered_hash|
+      hash.each do |k, v|
+        ordered_hash[k] = v
+      end
+    end
   end
 
 end
