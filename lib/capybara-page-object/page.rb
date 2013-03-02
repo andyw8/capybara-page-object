@@ -13,15 +13,26 @@ module CapybaraPageObject
       '/'
     end
 
+    def full_path
+      root_path + path
+    end
+
     def visit_path(attr)
-      target = root_path + path
+      target = full_path
       if attr.kind_of?(String)
         target += '/' + attr
       elsif attr.kind_of?(Integer)
         target += '/' + attr.to_s
       elsif attr.kind_of?(Hash)
-        pairs = attr.map { |k, v| "#{k}=#{v}" }
-        target += '?' + pairs.join('&') if pairs.any?
+        # to avoid API breakage, we only consider hash, the keys of which:
+        # - are symbols
+        # - match exactly with the segments of the path
+        if attr.keys == path.scan(/:(\w+)/).flatten.map(&:to_sym)
+          target = root_path + path.gsub(/:(\w+)/) {attr[$1.to_sym] }
+        else
+          pairs = attr.map { |k, v| "#{k}=#{v}" }
+          target += '?' + pairs.join('&') if pairs.any?
+        end
       elsif attr != nil
         raise ArgumentError, 'Expected a String, Integer or Hash'
       end
@@ -36,7 +47,7 @@ module CapybaraPageObject
 
     def current?
       page = new
-      page.source.current_path == page.root_path + page.path
+      page.source.current_path == page.full_path
     end
 
     def visit(attr=nil)

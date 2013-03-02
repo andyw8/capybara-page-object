@@ -6,8 +6,6 @@ module CapybaraPageObject
   class Node
     include Delegators
 
-    attr_accessor :source
-
     def initialize(source=nil)
       @source = source
     end
