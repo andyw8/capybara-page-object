@@ -1,4 +1,5 @@
-require 'helper'
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 
 describe "Head" do
   context "#title" do

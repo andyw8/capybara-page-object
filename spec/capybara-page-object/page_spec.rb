@@ -1,5 +1,6 @@
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 require 'active_support/ordered_hash'
-require File.dirname(__FILE__) + '/../lib/capybara-page-object/page'
 
 describe "a class which extends CapybaraPageObject::Page" do
 

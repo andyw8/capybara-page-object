@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CapybaraPageObject
   class List < CapybaraPageObject::Element
     def items(*args)

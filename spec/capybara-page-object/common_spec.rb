@@ -1,4 +1,5 @@
-require 'helper'
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 
 describe "Page" do
   before do
@@ -32,7 +33,7 @@ describe "Page" do
       html = '<div id="data" data-foo="a" data-bar="b" data-cat>Some data</div>'
       @fragment = CapybaraPageObject::Element.from_string html, 'div'
       h = {'foo' => 'a', 'bar' => 'b', 'cat' => ''}
-      @fragment.data.should == h 
+      @fragment.data.should == h
     end
   end
 end
