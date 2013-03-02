@@ -69,7 +69,7 @@ Gem::Specification.new do |s|
     "spec/element/table_spec.rb",
     "spec/element/textarea_spec.rb",
     "spec/fixtures/node.html",
-    "spec/helper.rb",
+    "spec/spec_helper.rb",
     "spec/node_spec.rb",
     "spec/page_spec.rb"
   ]

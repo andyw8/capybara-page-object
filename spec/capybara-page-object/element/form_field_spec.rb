@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe "FormField" do
   before do

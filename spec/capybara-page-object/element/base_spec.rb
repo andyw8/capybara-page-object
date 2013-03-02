@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe "Base" do
   before do

@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 module CapybaraPageObject
   class MyListItem < CapybaraPageObject::Node
