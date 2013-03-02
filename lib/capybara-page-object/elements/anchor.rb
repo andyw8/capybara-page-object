@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CapybaraPageObject
   class Anchor < CapybaraPageObject::Element
     field(:link) { source[:href] }

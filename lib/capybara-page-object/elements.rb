@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'capybara-page-object/elements/text_based_input'
 require 'capybara-page-object/elements/anchor'
 require 'capybara-page-object/elements/form'

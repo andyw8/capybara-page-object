@@ -1,5 +1,6 @@
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 require 'active_support/ordered_hash'
-require File.dirname(__FILE__) + '/../lib/capybara-page-object/page'
 
 describe "a class which extends CapybaraPageObject::Page" do
 
@@ -37,7 +38,7 @@ describe "a class which extends CapybaraPageObject::Page" do
       end.should raise_error(CapybaraPageObject::MissingPath, 'You need to override #path in CapybaraPageObject::Page')
     end
 
-    it "converts a supplied hash into querystring paramaters" do
+    it "converts a supplied hash into querystring parameters" do
       session = mock
       session.should_receive(:visit).with('/foos?a=1&b=2')
       Capybara.stub :current_session => session
@@ -96,4 +97,86 @@ describe "a class which extends CapybaraPageObject::Page" do
       Blah.new.navigation
     end
   end
+
+
+  # ------------------------------
+
+  describe "#full_path" do
+
+    it "returns the path from the root" do
+      FooShow.new.full_path.should eq('/foos')
+    end
+
+  end
+
+
+  # ------------------------------
+
+  describe "#visit_path", :focused => true do
+
+    class SegmentedPathPage < CapybaraPageObject::Page
+      path 'some/:p1/segmented/:p2/path'
+    end
+
+    before(:each) do
+      @page = SegmentedPathPage.new
+      @session = mock
+      @session.should_receive(:visit).with(expected_path)
+      Capybara.stub :current_session => @session
+      @page.visit_path parameters
+    end
+
+    context "when the supplied hash of symbol/value pairs exactly match all path segments" do
+      let(:expected_path) { '/some/v1/segmented/v2/path' }
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1', :p2 => 'v2']) }
+      it "interpolates all path segments" do
+        ;
+      end
+    end
+
+    context "when the supplied hash of symbol/value pairs does not exactly match all path segments" do
+      let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1&p3=v3' }
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1', :p3 => 'v3']) }
+      it "appends query parameters" do
+        ;
+      end
+    end
+
+    context "when the supplied hash has less symbol/value pairs than path segments" do
+      let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1' }
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1']) }
+      it "appends query parameters" do
+        ;
+      end
+    end
+
+    context "when the supplied hash has more symbol/value pairs than path segments" do
+      let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1&p2=v2&p3=v3' }
+      let(:parameters) { to_ordered_hash(Hash[:p1 => 'v1', :p2 => 'v2', :p3 => 'v3']) }
+      it "appends query parameters" do
+        ;
+      end
+    end
+
+    context "when the supplied hash has a key which is not a symbol" do
+      let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1&p2=v2' }
+      let(:parameters) { to_ordered_hash(Hash['p1' => 'v1', :p2 => 'v2']) }
+      it "appends query parameters" do
+        ;
+      end
+    end
+
+  end
+
+
+  # ------------------------------
+
+  def to_ordered_hash(hash)
+    ActiveSupport::OrderedHash.new.tap do |ordered_hash|
+      hash.each do |k, v|
+        ordered_hash[k] = v
+      end
+    end
+  end
+
 end

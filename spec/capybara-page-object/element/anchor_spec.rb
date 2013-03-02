@@ -1,7 +1,8 @@
-require 'helper'
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 
 describe "Anchor" do
-    
+
   before do
     @anchor = CapybaraPageObject::Anchor.from_string('<a href="hello.html">', 'a')
   end
