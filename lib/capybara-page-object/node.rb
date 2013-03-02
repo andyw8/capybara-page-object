@@ -1,11 +1,10 @@
+# -*- encoding : utf-8 -*-
 require 'capybara-page-object/delegators'
 
 
 module CapybaraPageObject
   class Node
     include Delegators
-
-    attr_accessor :source
 
     def initialize(source=nil)
       @source = source

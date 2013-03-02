@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'capybara-page-object/node'
 require 'capybara-page-object/collections'
 
@@ -12,20 +13,31 @@ module CapybaraPageObject
       '/'
     end
 
+    def full_path
+      root_path + path
+    end
+
     def visit_path(attr)
-      target = root_path + path
+      target = full_path
       if attr.kind_of?(String)
         target += '/' + attr
       elsif attr.kind_of?(Integer)
         target += '/' + attr.to_s
       elsif attr.kind_of?(Hash)
-        pairs = attr.map { |k, v| "#{k}=#{v}" }
-        target += '?' + pairs.join('&') if pairs.any?
+        # to mitigate API breakage, segments are interpolated from symbol keys
+        segment_ids = path.scan(/:(\w+)/).flatten.map(&:to_sym)
+        raise MissingPathSegment unless (segment_ids - attr.keys).empty?
+        interpolated_path = path.gsub(/:(\w+)/) { attr[$1.to_sym] }
+        query_parameters = attr.delete_if { |k, v| segment_ids.include?(k) }.map { |k, v| "#{k}=#{v}" }
+
+        target = root_path
+        target += interpolated_path
+        target += '?' + query_parameters.join('&') if query_parameters.any?
       elsif attr != nil
         raise ArgumentError, 'Expected a String, Integer or Hash'
       end
       source.visit target
-    end    
+    end
   end
 
   module ClassMethods
@@ -35,7 +47,7 @@ module CapybaraPageObject
 
     def current?
       page = new
-      page.source.current_path == page.root_path + page.path
+      page.source.current_path == page.full_path
     end
 
     def visit(attr=nil)
@@ -75,5 +87,8 @@ module CapybaraPageObject
   end
 
   class MissingPath < RuntimeError
+  end
+
+  class MissingPathSegment < RuntimeError
   end
 end

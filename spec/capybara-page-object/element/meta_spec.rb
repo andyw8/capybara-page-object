@@ -1,4 +1,5 @@
-require 'helper'
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 
 describe "Meta" do
   context "Meta" do
@@ -14,7 +15,7 @@ describe "Meta" do
         @meta.key.should == 'description'
       end
     end
-    
+
     context "#value" do
       it "return the description from the meta tag" do
         @meta.value.should == 'my description'

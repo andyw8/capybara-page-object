@@ -1,5 +1,6 @@
+# -*- encoding : utf-8 -*-
+require 'spec_helper'
 require 'active_support/ordered_hash'
-require File.dirname(__FILE__) + '/../lib/capybara-page-object/page'
 
 describe "a class which extends CapybaraPageObject::Page" do
 
@@ -37,7 +38,7 @@ describe "a class which extends CapybaraPageObject::Page" do
       end.should raise_error(CapybaraPageObject::MissingPath, 'You need to override #path in CapybaraPageObject::Page')
     end
 
-    it "converts a supplied hash into querystring paramaters" do
+    it "converts a supplied hash into querystring parameters" do
       session = mock
       session.should_receive(:visit).with('/foos?a=1&b=2')
       Capybara.stub :current_session => session
@@ -96,4 +97,88 @@ describe "a class which extends CapybaraPageObject::Page" do
       Blah.new.navigation
     end
   end
+
+
+  # ------------------------------
+
+  describe "#full_path" do
+
+    it "returns the path from the root" do
+      FooShow.new.full_path.should eq('/foos')
+    end
+
+  end
+
+
+  # ------------------------------
+
+  describe "#visit_path", :focused => true do
+
+    class SegmentedPathPage < CapybaraPageObject::Page
+      path 'some/:p1/segmented/:p2/path'
+    end
+
+    before(:each) do
+      @page = SegmentedPathPage.new
+      @session = mock
+      Capybara.stub :current_session => @session
+    end
+
+    context "when the supplied hash of symbol/value pairs exactly match all path segments" do
+      let(:expected_path) { '/some/v1/segmented/v2/path' }
+      let(:parameters) { force_order({ :p1 => 'v1' }, { :p2 => 'v2' }) }
+
+      it "interpolates all path segments" do
+        @session.should_receive(:visit).with(expected_path)
+        @page.visit_path parameters
+      end
+    end
+
+    context "when the supplied hash doesn't provide all the symbols of the path segments" do
+
+      context "because one is missing" do
+        let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1' }
+        let(:parameters) { force_order({ :p1 => 'v1' }) }
+
+        it "raises a MissingPathSegment error" do
+          expect { @page.visit_path parameters }.to raise_error CapybaraPageObject::MissingPathSegment
+        end
+      end
+
+      context "because one is not a symbol" do
+        let(:expected_path) { '/some/:p1/segmented/:p2/path?p1=v1&p2=v2' }
+        let(:parameters) { force_order({ 'p1' => 'v1' }, { :p2 => 'v2' }) }
+
+        it "raises a MissingPathSegment error" do
+          expect { @page.visit_path parameters }.to raise_error CapybaraPageObject::MissingPathSegment
+        end
+      end
+    end
+
+    context "when the supplied hash provides more than all the symbols of the path segments" do
+      let(:expected_path) { '/some/v1/segmented/v2/path?p3=v3&p4=v4' }
+      let(:parameters) { force_order({ :p1 => 'v1' }, { :p2 => 'v2' }, { :p3 => 'v3' }, { :p4 => 'v4' }) }
+
+      it "interpolates all path segments then appends the remaining query parameters" do
+        @session.should_receive(:visit).with(expected_path)
+        @page.visit_path parameters
+      end
+    end
+
+  end
+
+
+  # ------------------------------
+
+  # using an OrderedHash so we can guarantee the order on Ruby 1.8
+  def force_order(*pairs)
+    ordered_hash = ActiveSupport::OrderedHash.new
+    pairs.each do |pair|
+      pair.each do |k, v|
+        ordered_hash[k] = v
+      end
+    end
+    ordered_hash
+  end
+
 end
