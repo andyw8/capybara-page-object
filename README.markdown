@@ -114,7 +114,6 @@ There is several variants of the visit method:
 * with a hash parameter:
     * if the path has no segment, the key/value pairs will be appended as query strings (#4);
     * if the path has a segment, the hash must at least contains all the segment IDs, which will be interpolated. The other keys will be appended as query strings (#5);
-    * if the path has at least a segment, the hash must at least contains the segment IDs, which will be interpolated ; other keys will be appended as query strings ;
 
 <table>
     <tr>
